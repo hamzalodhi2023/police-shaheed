@@ -90,31 +90,31 @@ const getSingleShaheed = (req, res) => {
  */
 const createShaheed = (req, res) => {
   try {
-    const {
-      personal_no,
-      rank,
-      service_no,
-      name,
-      father_name,
-      cnic_no,
-      unit,
-      dob,
-      doa,
-      dos,
-      family_member,
-      contact,
-      address,
-      fir_no,
-      under_section,
-      police_station,
-      brief_fact,
-      compensation_amount,
-      paid_date,
-      photo,
-    } = req.body;
-
-    
-
+    // const {
+    //   personal_no,
+    //   rank,
+    //   service_no,
+    //   name,
+    //   father_name,
+    //   cnic_no,
+    //   unit,
+    //   place_of_posting,
+    //   dob,
+    //   doa,
+    //   dos,
+    //   family_member,
+    //   contact,
+    //   address,
+    //   fir_no,
+    //   under_section,
+    //   police_station,
+    //   brief_fact,
+    //   compensation_amount,
+    //   paid_date,
+    //   photo,
+    // } = req.body;
+    debug(req.file.buffer);
+    res.send("ok");
   } catch (error) {}
 };
 
