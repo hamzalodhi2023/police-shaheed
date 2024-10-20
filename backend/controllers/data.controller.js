@@ -9,7 +9,8 @@ const data = (req, res) => {
         console.log(err);
         return res.status(500).json({ message: "Error reading data." });
       } else {
-        return res.send(JSON.parse(data));
+        const parsedData = JSON.parse(data);
+        return res.status(200).json({ data: parsedData });
       }
     });
   } catch (error) {}
