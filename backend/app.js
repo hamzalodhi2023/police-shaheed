@@ -1,31 +1,42 @@
+/**
+ * Express application setup and configuration.
+ * @module app
+ */
+
 const express = require("express");
 const cors = require("cors");
-const debug = require("debug")("development:server");
+const debug = require("debug")("development:app");
+
+// Import routes
+const shaheedRoute = require("./routes/shaheed.route");
+
+// Load environment variables
 require("dotenv").config();
 
-// importing all routes
-const dataRoutes = require("./routes/data.route");
-
+// Initialize Express app
 const app = express();
 const PORT = process.env.PORT;
 
-// using all routes
-app.use("/api/shaheed", dataRoutes);
-
+// Middleware setup
+app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(
-  cors({
-    origin: "http://localhost:5173",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  })
-);
+app.use(express.urlencoded({ extended: false }));
 
+// Route setup
+app.use("/api/shaheed", shaheedRoute);
+
+/**
+ * Root route handler.
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ */
 app.get("/", (req, res) => {
-  res.send("Welcome to the API");
+  res.send("Hello World!");
 });
 
+/**
+ * Start the server and listen on the specified port.
+ */
 app.listen(PORT, () => {
-  debug(`Server is running on PORT: ${PORT}`);
+  debug(`Server is running on port ${PORT}`);
 });
