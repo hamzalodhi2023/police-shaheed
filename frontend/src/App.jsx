@@ -4,29 +4,33 @@ import Home from './pages/Home'
 import SingleView from './pages/SingleView'
 import Error from './pages/Error'
 import Layout from './components/layout/Layout'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
-const routes = createBrowserRouter([
-  {
-    path: '/',
-    element: <Layout />,
-    errorElement: <Error />,
-    children: [
-      {
-        path: '/',
-        element: <Home />,
-      },
-      {
-        path: '/:id',
-        element: <SingleView />,
-      },
-    ]
-  },
-])
 
 function App() {
+  const routes = createBrowserRouter([
+    {
+      path: '/',
+      element: <Layout />,
+      errorElement: <Error />,
+      children: [
+        {
+          path: '/',
+          element: <Home />,
+        },
+        {
+          path: '/:id',
+          element: <SingleView />,
+        },
+      ]
+    },
+  ])
+  const queryClient = new QueryClient();
   return (
     <>
-      <RouterProvider router={routes} />
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={routes} />
+      </QueryClientProvider>
     </>
   )
 }

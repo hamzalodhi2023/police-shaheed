@@ -1,6 +1,14 @@
+import { useQuery, } from "@tanstack/react-query";
 import { FaEye } from "react-icons/fa";
 import { MdEditSquare } from "react-icons/md";
+import { GetShaheedData } from "../api/ShaheedApi";
 function Home() {
+    const { data } = useQuery({
+        queryKey: ["shaheed"],
+        queryFn: GetShaheedData,
+    })
+    console.log(data)
+
     return (
         <>
             <div className="w-full min-h-screen ">

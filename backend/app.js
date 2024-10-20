@@ -12,7 +12,14 @@ const PORT = process.env.PORT;
 // using all routes
 app.use("/api/data", dataRoutes);
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 app.get("/", (req, res) => {
