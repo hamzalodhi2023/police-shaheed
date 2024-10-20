@@ -2,21 +2,31 @@ import { useQuery, } from "@tanstack/react-query";
 import { FaEye } from "react-icons/fa";
 import { MdEditSquare } from "react-icons/md";
 import { GetShaheedData } from "../api/ShaheedApi";
+import RiseLoader from "react-spinners/RiseLoader";
+import ShaheedMap from "../components/ShaheedMap";
 function Home() {
     const { data, isPending, error, isError } = useQuery({
         queryKey: ["shaheed"],
         queryFn: GetShaheedData,
     })
-    console.log(data)
-
-    console.log(data)
 
     if (isPending) {
-        return <div>Loading...</div>
+        return <div className="w-full h-screen absolute flex items-center justify-center bg-transparent flex-col gap-10">
+            <RiseLoader
+                color="#2a489e"
+                loading={isPending}
+                size={30}
+                aria-label="Loading Spinner"
+                data-testid="loader"
+            />
+            <p className="text-xl">Loading...</p>
+        </div>
     }
 
     if (isError) {
-        return <div>Error: {error.message}</div>
+        return <div className="w-full h-screen absolute flex items-center justify-center bg-transparent flex-col gap-10">
+            <p className="text-xl">Error: {error.message}</p>
+        </div>
     }
 
     return (
@@ -79,56 +89,76 @@ function Home() {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr className="even:bg-gray-50 hover:bg-gray-100">
-                                <td className="py-2 px-4 border-b text-[12px] text-center">
-                                    1
+                            {data?.map((item) => {
+                                const { id, personal_no,
+                                    rank,
+                                    service_no,
+                                    name,
+                                    father_name,
+                                    cnic_no,
+                                    unit,
+                                    place_of_posting,
+                                    dob,
+                                    doa,
+                                    dos,
+                                    photo, } = item;
+                                return <tr key={item.id} className="even:bg-gray-50 hover:bg-gray-100">
+                                    <td className="py-2 px-4 border-b text-[12px] text-center">
+                                        {id}
 
-                                </td>
-                                <td className="py-2 px-4 border-b text-[12px] text-center">
-                                    10154177
-                                </td>
-                                <td className="py-2 px-4 border-b text-[12px] text-center">
-                                    DIGP
-                                </td>
-                                <td className="py-2 px-4 border-b text-[12px] text-center">
-                                    K-10786
-                                </td>
-                                <td className="py-2 px-4 border-b text-[12px] text-center">
-                                    Umar Hayat Khna Lodhi
-                                </td>
-                                <td className="py-2 px-4 border-b text-[12px] text-center">
-                                    Zahid Raza Khan
-                                </td>
-                                <td className="py-2 px-4 border-b text-[12px] text-center">
-                                    4210176840201
-                                </td>
-                                <td className="py-2 px-4 border-b text-[12px] text-center">
-                                    PHQ Garden
-                                </td>
-                                <td className="py-2 px-4 border-b text-[12px] text-center">
-                                    Madina Colony
-                                </td>
-                                <td className="py-2 px-4 border-b text-[12px] text-center">
-                                    24-04-1965
-                                </td>
-                                <td className="py-2 px-4 border-b text-[12px] text-center">
-                                    25-03-1990
-                                </td>
-                                <td className="py-2 px-4 border-b text-[12px] text-center">
-                                    23.04.2004
-                                </td>
-                                <td className="py-2 px-4 border-b text-[12px] text-center">
-                                    image
-                                </td>
-                                <td className="py-2 px-4 border-b text-[15px] text-center">
-                                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
-                                        <FaEye />
-                                    </button>
-                                    <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded m-2">
-                                        <MdEditSquare />
-                                    </button>
-                                </td>
-                            </tr>
+                                    </td>
+                                    <td className="py-2 px-4 border-b text-[12px] text-center">
+                                        {personal_no}
+                                    </td>
+                                    <td className="py-2 px-4 border-b text-[12px] text-center">
+                                        {rank}
+                                    </td>
+                                    <td className="py-2 px-4 border-b text-[12px] text-center">
+                                        {service_no}
+                                    </td>
+                                    <td className="py-2 px-4 border-b text-[12px] text-center">
+                                        {name}
+                                    </td>
+                                    <td className="py-2 px-4 border-b text-[12px] text-center">
+                                        {father_name}
+                                    </td>
+                                    <td className="py-2 px-4 border-b text-[12px] text-center">
+                                        {cnic_no}
+                                    </td>
+                                    <td className="py-2 px-4 border-b text-[12px] text-center">
+                                        {unit}
+                                    </td>
+                                    <td className="py-2 px-4 border-b text-[12px] text-center">
+                                        {place_of_posting}
+                                    </td>
+                                    <td className="py-2 px-4 border-b text-[12px] text-center">
+                                        {dob}
+                                    </td>
+                                    <td className="py-2 px-4 border-b text-[12px] text-center">
+                                        {doa}
+                                    </td>
+                                    <td className="py-2 px-4 border-b text-[12px] text-center">
+                                        {dos}
+                                    </td>
+                                    <td className="py-2 px-4 border-b text-[12px] text-center">
+                                        {photo}
+                                    </td>
+                                    <td className="py-2 px-4 border-b text-[15px] text-center">
+                                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
+                                            <FaEye />
+                                        </button>
+                                        <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded m-2">
+                                            <MdEditSquare />
+                                        </button>
+                                    </td>
+                                </tr>
+                            })
+
+                            }
+
+
+
+
                         </tbody>
                     </table>
                 </div>
