@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const debug = require("debug")("development:server");
 require("dotenv").config();
 
 // importing all routes
@@ -9,7 +10,7 @@ const app = express();
 const PORT = process.env.PORT;
 
 // using all routes
-app.use("/api/data", dataRoutes);
+app.use("/api/shaheed", dataRoutes);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -26,5 +27,5 @@ app.get("/", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server is running on PORT: ${PORT}`);
+  debug(`Server is running on PORT: ${PORT}`);
 });
