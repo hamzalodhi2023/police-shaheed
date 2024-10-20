@@ -88,7 +88,35 @@ const getSingleShaheed = (req, res) => {
  * @param {Object} req - Express request object
  * @param {Object} res - Express response object
  */
-const createShaheed = (req, res) => {};
+const createShaheed = (req, res) => {
+  try {
+    const {
+      personal_no,
+      rank,
+      service_no,
+      name,
+      father_name,
+      cnic_no,
+      unit,
+      dob,
+      doa,
+      dos,
+      family_member,
+      contact,
+      address,
+      fir_no,
+      under_section,
+      police_station,
+      brief_fact,
+      compensation_amount,
+      paid_date,
+      photo,
+    } = req.body;
+
+    
+
+  } catch (error) {}
+};
 
 /**
  * Updates an existing shaheed record
