@@ -48,7 +48,39 @@ const getShaheed = (req, res) => {
  */
 const getSingleShaheed = (req, res) => {
   try {
-  } catch (error) {}
+    // Extract the shaheed ID from the request parameters
+    const { id } = req.params;
+
+    // Read the contents of the shaheed JSON file
+    fs.readFile(shaheedFilePath, "utf-8", (err, data) => {
+      if (err) {
+        // Log the error for debugging purposes
+        debug(err);
+        // Return a 500 Internal Server Error response
+        return res.status(500).json({ error: "Internal Server Error" });
+      }
+
+      // Parse the JSON data
+      const shaheedData = JSON.parse(data);
+
+      // Find the shaheed with the matching ID
+      const shaheed = shaheedData.find((shaheed) => shaheed.id === Number(id));
+
+      // If no shaheed is found, return a 404 Not Found response
+      if (!shaheed) {
+        debug("Shaheed not found");
+        return res.status(404).json({ error: "Shaheed not found" });
+      }
+
+      // Return a 200 OK response with the found shaheed data
+      return res.status(200).json(shaheed);
+    });
+  } catch (error) {
+    // Log any unexpected errors
+    debug(error);
+    // Return a 500 Internal Server Error response
+    return res.status(500).json({ error: "Internal Server Error" });
+  }
 };
 
 /**
