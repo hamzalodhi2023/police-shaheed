@@ -56,11 +56,13 @@ function ShaheedMap({ data = [] }) {
                         {dos}
                     </td>
                     <td className="py-2 px-4 border-b text-[12px] text-center">
-                        <img src={photo} alt="" />
+                        <img src={photo} className="w-[96px] " alt={name} />
                     </td>
                     <td className="py-2 px-4 border-b text-[15px] text-center">
-                        <NavLink to={`/${id}`} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
-                            <FaEye />
+                        <NavLink to={`/${id}`} >
+                            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
+                                <FaEye />
+                            </button>
                         </NavLink>
                         <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded m-2">
                             <MdEditSquare />

@@ -14,3 +14,14 @@ export const GetShaheedData = async () => {
         return []
     }
 }
+
+
+export const GetShaheedSData = async (urlId) => {
+    try {
+        const res = await api.get(`/shaheed/${urlId}`);
+        return res.status === 200 ? res.data : [];
+    } catch (error) {
+        console.log(error)
+        return []
+    }
+}

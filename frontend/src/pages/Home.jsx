@@ -3,6 +3,7 @@ import { useQuery, } from "@tanstack/react-query";
 import { GetShaheedData } from "../api/ShaheedApi";
 import RiseLoader from "react-spinners/RiseLoader";
 import ShaheedMap from "../components/ShaheedMap";
+import { NavLink } from "react-router-dom";
 function Home() {
     const { data, isPending, error, isError } = useQuery({
         queryKey: ["shaheed"],
@@ -32,17 +33,17 @@ function Home() {
         <>
             <div className="w-full min-h-screen ">
                 <div className="logo-div w-full flex items-center justify-center mt-5">
-                    <img src="https://www.sindhpolice.gov.pk/images/logo.png" alt="Logo" className="w-32" />
+                    <img src="https://upload.wikimedia.org/wikipedia/en/e/e0/Sindh_Police_Logo.png" alt="Logo" className="w-32" />
                 </div>
                 <h1 className="text-center font-semibold text-3xl mt-3">Shaheed Police Profile</h1>
                 <p className="text-center text-gray-500 ">Welfare Branch, DIGP South Zone, Karachi</p>
                 <div className="w-full flex items-center justify-end px-5">
-                    <button className="bg-[#2a489e] hover:bg-[#2e51b1] text-white font-bold py-2 px-6 rounded">Add</button>
+                    <NavLink to="/create" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded">Add</NavLink>
                 </div>
                 <div className="overflow-x-auto w-full mt-5">
                     <table className="min-w-full bg-white border border-gray-300">
                         <thead>
-                            <tr className="bg-gray-700 text-white ">
+                            <tr className="bg-blue-500 text-white ">
                                 <th className="py-2 px-4 border-b text-[12px]  text-center font-semibold  uppercase tracking-wider">
                                     Id
                                 </th>

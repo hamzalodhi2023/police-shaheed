@@ -3,7 +3,6 @@ import { useNavigate, useRouteError } from "react-router-dom";
 function Error() {
     const navigate = useNavigate();
     const error = useRouteError();
-    console.log(error)
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 px-4 sm:px-6 lg:px-8">
             <div className="max-w-md w-full space-y-8 text-center">
