@@ -15,11 +15,24 @@ export const GetShaheedData = async () => {
     }
 }
 
-
 export const GetShaheedSData = async (urlId) => {
     try {
         const res = await api.get(`/shaheed/${urlId}`);
         return res.status === 200 ? res.data : [];
+    } catch (error) {
+        console.log(error)
+        return []
+    }
+}
+
+export const CShaheedData = async (fD) => {
+    try {
+        const res = await api.post("/shaheed/create", fD);
+        if (res.status === 201) {
+            return res.data;
+        } else {
+            throw new Error("Failed to update post");
+        }
     } catch (error) {
         console.log(error)
         return []

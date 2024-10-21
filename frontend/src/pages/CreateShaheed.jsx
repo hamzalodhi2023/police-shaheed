@@ -1,6 +1,10 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react"
+import { CShaheedData } from "../api/ShaheedApi";
+
 
 function CreateShaheed() {
+    const [photo, setPhoto] = useState("")
     const [formData, setFormData] = useState({
         personal_no: "",
         rank: "",
@@ -22,9 +26,41 @@ function CreateShaheed() {
         brief_fact: "",
         compensation_amount: "",
         paid_date: "",
-        photo: "",
-
     })
+    const queryClient = useQueryClient();
+
+    const createMutation = useMutation({
+        mutationFn: (fD) => CShaheedData(fD),
+        onSuccess: () => {
+            queryClient.invalidateQueries(["shaheed"]);
+            setFormData({
+                personal_no: "",
+                rank: "",
+                service_no: "",
+                name: "",
+                father_name: "",
+                cnic_no: "",
+                unit: "",
+                place_of_posting: "",
+                dob: "",
+                doa: "",
+                dos: "",
+                family_member: "",
+                contact: "",
+                address: "",
+                fir_no: "",
+                under_section: "",
+                police_station: "",
+                brief_fact: "",
+                compensation_amount: "",
+                paid_date: "",
+            })
+            setPhoto(null)
+        },
+    })
+
+
+
     const policeStation = [
         { label: "Clifton" },
         { label: "Boat Basin" },
@@ -94,16 +130,23 @@ function CreateShaheed() {
     };
 
     const handleFileChange = (e) => {
-        console.log(e.target.files[0]); // Debugging line
         const file = e.target.files[0];
         if (file) {
-            setFormData((prevData) => ({ ...prevData, photo: file }));
+            setPhoto(file);
         }
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(formData)
+
+        const fD = new FormData();
+
+        Object.entries(formData).map(([key, value]) => {
+            fD.append(key, value)
+
+        })
+        fD.append("photo", photo)
+        createMutation.mutate(fD)
     };
 
     return (

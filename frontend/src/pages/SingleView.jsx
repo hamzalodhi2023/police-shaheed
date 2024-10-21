@@ -56,7 +56,7 @@ function SingleView() {
         <div className="w-full pt-10 px-10">
             <button
                 onClick={() => navigate(-1)}
-                className="mb-4 px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded"
+                className="mb-4 ml-10 px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded"
             >
                 Go Back
             </button>
@@ -66,7 +66,7 @@ function SingleView() {
                 <p>DIGP South Zone, Karachi <br />
                     Welfare Branch
                 </p>
-                <img src={photo} alt={name} className="mt-5 w-[96px]" />
+                <img src={`/public/profiles/${photo}`} alt={name} className="mt-5 w-[96px]" />
             </div>
             {/* image div */}
             <div className="w-full px-10 mb-10">

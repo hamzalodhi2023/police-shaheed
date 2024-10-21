@@ -35,7 +35,7 @@ function Home() {
                 <div className="logo-div w-full flex items-center justify-center mt-5">
                     <img src="https://upload.wikimedia.org/wikipedia/en/e/e0/Sindh_Police_Logo.png" alt="Logo" className="w-32" />
                 </div>
-                <h1 className="text-center font-semibold text-3xl mt-3">Shaheed Police Profile</h1>
+                <h1 className="text-center font-semibold text-3xl mt-3">Police Shaheed Profile</h1>
                 <p className="text-center text-gray-500 ">Welfare Branch, DIGP South Zone, Karachi</p>
                 <div className="w-full flex items-center justify-end px-5">
                     <NavLink to="/create" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded">Add</NavLink>
