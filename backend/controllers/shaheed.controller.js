@@ -7,12 +7,6 @@ const debug = require("debug")("development:controller:shaheed");
 const shaheedFilePath = path.join(__dirname, "../database/shaheed.json");
 
 /**
- * Retrieves all shaheed data
- * @param {Object} req - Express request object
- * @param {Object} res - Express response object
- * @returns {Object} JSON response with shaheed data or error message
- */
-/**
  * Retrieves all shaheed data from the JSON file
  * @param {Object} req - Express request object
  * @param {Object} res - Express response object
@@ -89,33 +83,85 @@ const getSingleShaheed = (req, res) => {
  * @param {Object} res - Express response object
  */
 const createShaheed = (req, res) => {
+  const {
+    personal_no,
+    rank,
+    service_no,
+    name,
+    father_name,
+    cnic_no,
+    unit,
+    place_of_posting,
+    dob,
+    doa,
+    dos,
+    family_member,
+    contact,
+    address,
+    fir_no,
+    under_section,
+    police_station,
+    brief_fact,
+    compensation_amount,
+    paid_date,
+  } = req.body;
   try {
-    // const {
-    //   personal_no,
-    //   rank,
-    //   service_no,
-    //   name,
-    //   father_name,
-    //   cnic_no,
-    //   unit,
-    //   place_of_posting,
-    //   dob,
-    //   doa,
-    //   dos,
-    //   family_member,
-    //   contact,
-    //   address,
-    //   fir_no,
-    //   under_section,
-    //   police_station,
-    //   brief_fact,
-    //   compensation_amount,
-    //   paid_date,
-    //   photo,
-    // } = req.body;
-    debug(req.file.buffer);
-    res.send("ok");
-  } catch (error) {}
+    fs.readFile(shaheedFilePath, "utf-8", (err, data) => {
+      if (err) {
+        // Log the error for debugging purposes
+        debug(err);
+        // Return a 500 Internal Server Error response
+        return res.status(500).json({ error: "Internal Server Error" });
+      }
+      // Parse the JSON data
+      const shaheedData = JSON.parse(data);
+      // Generate a new ID for the new shaheed
+      const newId = shaheedData.length + 1;
+      // Create a new shaheed object
+      const newShaheed = {
+        id: newId,
+        personal_no,
+        rank,
+        service_no,
+        name,
+        father_name,
+        cnic_no,
+        unit,
+        place_of_posting,
+        dob,
+        doa,
+        dos,
+        family_member,
+        contact,
+        address,
+        fir_no,
+        under_section,
+        police_station,
+        brief_fact,
+        compensation_amount,
+        paid_date,
+        photo: req.file.filename,
+      };
+      // Add the new shaheed to the data array
+      shaheedData.push(newShaheed);
+      // Write the updated data back to the JSON file
+      fs.writeFile(shaheedFilePath, JSON.stringify(shaheedData), (err) => {
+        if (err) {
+          // Log the error for debugging purposes
+          debug(err);
+          // Return a 500 Internal Server Error response
+          return res.status(500).json({ error: "Internal Server Error" });
+        }
+        // Return a 201 Created response with the new shaheed data
+        return res.status(201).json(newShaheed);
+      });
+    });
+  } catch (error) {
+    // Log the error for debugging purposes
+    debug(error);
+    // Return a 500 Internal Server Error response
+    return res.status(500).json({ error: "Internal Server Error" });
+  }
 };
 
 /**
