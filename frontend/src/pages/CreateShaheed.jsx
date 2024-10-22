@@ -1,9 +1,13 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react"
 import { CShaheedData } from "../api/ShaheedApi";
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function CreateShaheed() {
+    const notify = () => toast.success('Profile Created Successfully!');
     const [photo, setPhoto] = useState("")
     const [formData, setFormData] = useState({
         personal_no: "",
@@ -56,6 +60,7 @@ function CreateShaheed() {
                 paid_date: "",
             })
             setPhoto(null)
+            notify()
         },
     })
 
