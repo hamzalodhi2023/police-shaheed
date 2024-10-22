@@ -39,6 +39,7 @@ const getShaheed = (req, res) => {
  * Retrieves a single shaheed record
  * @param {Object} req - Express request object
  * @param {Object} res - Express response object
+ * @returns {Object} JSON response with shaheed data or error message
  */
 const getSingleShaheed = (req, res) => {
   try {
@@ -81,6 +82,7 @@ const getSingleShaheed = (req, res) => {
  * Creates a new shaheed record
  * @param {Object} req - Express request object
  * @param {Object} res - Express response object
+ * @returns {Object} JSON response with new shaheed data or error message
  */
 const createShaheed = (req, res) => {
   const {
@@ -176,7 +178,45 @@ const editShaheed = (req, res) => {};
  * @param {Object} req - Express request object
  * @param {Object} res - Express response object
  */
-const deleteShaheed = (req, res) => {};
+const deleteShaheed = (req, res) => {
+  try {
+    // Extract the shaheed ID from the request parameters
+    const { id } = req.params;
+
+    fs.readFile(shaheedFilePath, "utf-8", (err, data) => {
+      if (err) {
+        // Log the error for debugging purposes
+        debug(err);
+        // Return a 500 Internal Server Error response
+        return res.status(500).json({ error: "Internal Server Error" });
+      }
+      // Parse the JSON data
+      const shaheedData = JSON.parse(data);
+      // Find the index of the shaheed with the matching ID
+      const index = shaheedData.findIndex(
+        (shaheed) => shaheed.id === Number(id)
+      );
+      // If no shaheed is found, return a 404 Not Found response
+      if (index === -1) {
+        debug("Shaheed not found");
+        return res.status(404).json({ error: "Shaheed not found" });
+      }
+      // Remove the shaheed from the data array
+      shaheedData.splice(index, 1);
+      // Write the updated data back to the JSON file
+      fs.writeFile(shaheedFilePath, JSON.stringify(shaheedData), (err) => {
+        if (err) {
+          // Log the error for debugging purposes
+          debug(err);
+          // Return a 500 Internal Server Error response
+          return res.status(500).json({ error: "Internal Server Error" });
+        }
+        // Return a 202 accepted response
+        return res.status(202).json({ message: "Shaheed deleted" });
+      });
+    });
+  } catch (error) {}
+};
 
 // Export controller functions
 module.exports = {
