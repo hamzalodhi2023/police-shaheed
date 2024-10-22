@@ -4,8 +4,10 @@ import Home from './pages/Home'
 import SingleView from './pages/SingleView'
 import Error from './pages/Error'
 import Layout from './components/layout/Layout'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import CreateShaheed from './pages/CreateShaheed'
+const queryClient = new QueryClient();
 
 function App() {
   const routes = createBrowserRouter([
@@ -19,17 +21,21 @@ function App() {
           element: <Home />,
         },
         {
-          path: '/:id',
+          path: '/:urlId',
           element: <SingleView />,
         },
+        {
+          path: "/create",
+          element: <CreateShaheed />,
+        }
       ]
     },
   ])
-  const queryClient = new QueryClient();
   return (
     <>
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={routes} />
+        <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </>
   )

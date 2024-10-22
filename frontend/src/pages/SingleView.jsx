@@ -1,109 +1,167 @@
+import { useQuery } from "@tanstack/react-query"
+import { useParams, useNavigate } from "react-router-dom"
+import { GetShaheedSData } from "../api/ShaheedApi"
+import RiseLoader from "react-spinners/RiseLoader"
+
 function SingleView() {
+    const { urlId } = useParams()
+    const navigate = useNavigate()
+    const { data, isPending, isError, error } = useQuery({
+        queryKey: ["shaheedS", urlId],
+        queryFn: () => GetShaheedSData(urlId),
+    })
+
+    if (isPending) {
+        return <div className="w-full h-screen absolute flex items-center justify-center bg-transparent flex-col gap-10">
+            <RiseLoader
+                color="#2a489e"
+                loading={isPending}
+                size={30}
+                aria-label="Loading Spinner"
+                data-testid="loader"
+            />
+            <p className="text-xl">Loading...</p>
+        </div>
+    }
+
+    if (isError) {
+        return <div className="w-full h-screen absolute flex items-center justify-center bg-transparent flex-col gap-10">
+            <p className="text-xl">Error: {error.message}</p>
+        </div>
+    }
+
+    console.log(data)
+    const { id, personal_no,
+        rank,
+        service_no,
+        name,
+        father_name,
+        cnic_no,
+        unit,
+        place_of_posting,
+        dob,
+        doa,
+        dos,
+        family_member,
+        contact,
+        address,
+        fir_no,
+        under_section,
+        police_station,
+        brief_fact,
+        compensation_amount,
+        paid_date,
+        photo, } = data
     return (
         <div className="w-full pt-10 px-10">
+            <button
+                onClick={() => navigate(-1)}
+                className="mb-4 ml-10 px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded"
+            >
+                Go Back
+            </button>
             {/* image div */}
             <div className="mb-6 w-full pl-10">
                 <h1 className="text-3xl font-bold ">Shaheed Profile</h1>
                 <p>DIGP South Zone, Karachi <br />
                     Welfare Branch
                 </p>
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkPOaUrUqz3q3uj1CaIlhwdg_8FGC6j4HbkA&s" alt="Shaheed" className="mt-5 w-[96px]" />
+                <img src={`/public/profiles/${photo}`} alt={name} className="mt-5 w-[96px]" />
             </div>
             {/* image div */}
             <div className="w-full px-10 mb-10">
-                <h1 className="text-2xl font-semibold mb-5 text-[#2a489e] border-b-[1px]">Shaheed Detail:</h1>
+                <h1 className="text-2xl font-semibold mb-5 text-blue-500 border-b-[1px]">Shaheed Detail:</h1>
                 <div className="w-full flex my-5 items-center justify-between">
                     <div className="w-1/3">
                         <label className="font-semibold" >ID:</label>
-                        <p>1</p>
+                        <p>{id}</p>
                     </div>
                     <div className="w-1/3">
                         <label className="font-semibold" >Personal No:</label>
-                        <p>10154177</p>
+                        <p>{personal_no}</p>
                     </div>
                     <div className="w-1/3">
                         <label className="font-semibold" >Rank:</label>
-                        <p>PI</p>
+                        <p>{rank}</p>
                     </div>
                 </div>
                 <div className="w-full flex my-5 items-center justify-between">
                     <div className="w-1/3">
                         <label className="font-semibold" >Service No:</label>
-                        <p>K-10786</p>
+                        <p>{service_no}</p>
                     </div>
                     <div className="w-1/3">
                         <label className="font-semibold" >Name:</label>
-                        <p>Zahid Raza Khan</p>
+                        <p>{name}</p>
                     </div>
                     <div className="w-1/3">
-                        <label className="font-semibold" >Father&apos;s Name:</label>
-                        <p>Zahid Raza Khan</p>
+                        <label className="font-semibold" >Father's Name:</label>
+                        <p>{father_name}</p>
                     </div>
                 </div>
                 <div className="w-full flex my-5 items-center justify-between">
                     <div className="w-1/3">
                         <label className="font-semibold" >CNIC No:</label>
-                        <p>4210176840201</p>
+                        <p>{cnic_no}</p>
                     </div>
                     <div className="w-1/3">
                         <label className="font-semibold" >Unit:</label>
-                        <p>Inv-I</p>
+                        <p>{unit}</p>
                     </div>
                     <div className="w-1/3">
                         <label className="font-semibold" >Place of Posting:</label>
-                        <p>Madina Colony</p>
+                        <p>{place_of_posting}</p>
                     </div>
                 </div>
                 <div className="w-full flex my-5 items-center justify-between">
                     <div className="w-1/3">
                         <label className="font-semibold" >D.O.B:</label>
-                        <p>24-04-1965</p>
+                        <p>{dob}</p>
                     </div>
                     <div className="w-1/3">
                         <label className="font-semibold" >D.O.A:</label>
-                        <p>25-03-1990</p>
+                        <p>{doa}</p>
                     </div>
                     <div className="w-1/3">
                         <label className="font-semibold" >D.O.Shahadat:</label>
-                        <p>23.04.2004</p>
+                        <p>{dos}</p>
                     </div>
                 </div>
             </div>
             <div className="w-full px-10 mb-10">
-                <h1 className="text-2xl font-semibold mb-5 text-[#2a489e] border-b-[1px]">Family Detail:</h1>
+                <h1 className="text-2xl font-semibold mb-5 text-blue-500 border-b-[1px]">Family Detail:</h1>
                 <div className="w-full flex my-5 items-center justify-between">
                     <div className="w-1/3">
                         <label className="font-semibold" >Name Family Member with Relation:</label>
-                        <p>ZEBA TOUFEEQ (WIDOW)</p>
+                        <p>{family_member}</p>
                     </div>
                     <div className="w-1/3">
                         <label className="font-semibold" >Contact:</label>
-                        <p>0300-9249560</p>
+                        <p>{contact}</p>
                     </div>
                     <div className="w-1/3">
                         <label className="font-semibold" >Address:</label>
                         <p>
-                            Flate # 313 Block C Marine Drive Clifton
-                            Block 2 Karachi
+                            {address}
                         </p>
                     </div>
                 </div>
             </div>
             <div className="w-full px-10 mb-10">
-                <h1 className="text-2xl font-semibold mb-5 text-[#2a489e] border-b-[1px]">FIR Detail:</h1>
+                <h1 className="text-2xl font-semibold mb-5 text-blue-500 border-b-[1px]">FIR Detail:</h1>
                 <div className="w-full flex my-5 items-center justify-between">
                     <div className="w-1/3">
                         <label className="font-semibold" >FIR No:</label>
-                        <p>71/2004</p>
+                        <p>{fir_no}</p>
                     </div>
                     <div className="w-1/3">
                         <label className="font-semibold" >Under Section:</label>
-                        <p>302/324 PPC</p>
+                        <p>{under_section}</p>
                     </div>
                     <div className="w-1/3">
                         <label className="font-semibold" >Police Station:</label>
                         <p>
-                            GULBERG
+                            {police_station}
                         </p>
                     </div>
                 </div>
@@ -111,21 +169,21 @@ function SingleView() {
                     <div className="w-full">
                         <label className="font-semibold" >Brief Facts:</label>
                         <p className="text-justify">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam distinctio veritatis odit voluptatem amet quisquam debitis? Quibusdam expedita alias fugit sunt eaque impedit ex rem, perspiciatis provident, quo natus officia! Culpa exercitationem temporibus at numquam aperiam nisi commodi, animi dolore distinctio ullam neque, quia totam placeat laborum perspiciatis, quidem tempore? Repellendus, nisi esse suscipit distinctio, eos deleniti optio quasi, aperiam soluta consequuntur dicta. Perspiciatis, eaque veniam rem alias id quod aspernatur recusandae ad facere atque maxime temporibus! Reprehenderit vitae quasi quod, tenetur provident culpa odit, nam enim vero rerum veritatis illo asperiores? Fuga magni dolorem, architecto hic iure explicabo quisquam.
+                            {brief_fact}
                         </p>
                     </div>
                 </div>
             </div>
             <div className="w-full px-10">
-                <h1 className="text-2xl font-semibold mb-5 text-[#2a489e] border-b-[1px]">Compensation Detail:</h1>
+                <h1 className="text-2xl font-semibold mb-5 text-blue-500 border-b-[1px]">Compensation Detail:</h1>
                 <div className="w-full flex my-5 items-center justify-start">
                     <div className="w-1/3">
                         <label className="font-semibold" >Compensation Amount:</label>
-                        <p>300,000</p>
+                        <p>{compensation_amount}</p>
                     </div>
                     <div className="w-1/3">
                         <label className="font-semibold" >Paid Date:</label>
-                        <p>07-07-2004</p>
+                        <p>{paid_date}</p>
                     </div>
 
                 </div>
