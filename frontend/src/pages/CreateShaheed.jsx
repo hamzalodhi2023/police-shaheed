@@ -1,12 +1,13 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react"
 import { CShaheedData } from "../api/ShaheedApi";
-import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from "react-router-dom";
 
 
 function CreateShaheed() {
+    const navigate = useNavigate()
     const notify = () => toast.success('Profile Created Successfully!');
     const [photo, setPhoto] = useState("")
     const [formData, setFormData] = useState({
@@ -156,6 +157,12 @@ function CreateShaheed() {
 
     return (
         <div className="w-full min-h-screen flex items-center justify-center">
+            <button
+                onClick={() => navigate("/")}
+                className="absolute top-5 left-5 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+            >
+                Go Back
+            </button>
             <form onSubmit={handleSubmit} className="w-[80%]  flex items-center justify-start min-h-screen py-5 pt-10 px-5 flex-col">
                 <p className="text-3xl font-semibold mb-5 text-blue-500">Shaheed Data Form</p>
                 <div className="w-full flex items-center justify-between my-5">

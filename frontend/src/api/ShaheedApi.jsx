@@ -38,3 +38,17 @@ export const CShaheedData = async (fD) => {
         return []
     }
 }
+
+export const DShaheedData = async (urlId) => {
+    try {
+        const res = await api.delete(`/shaheed/delete/${urlId}`);
+        if (res.status === 202) {
+            return res.data;
+        } else {
+            throw new Error("Failed to update post");
+        }
+    } catch (error) {
+        console.log(error)
+        return []
+    }
+}
