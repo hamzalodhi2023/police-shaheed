@@ -307,8 +307,31 @@ const deleteShaheed = (req, res) => {
         debug("Shaheed not found");
         return res.status(404).json({ error: "Shaheed not found" });
       }
+
+      // Store the deleted item before splicing
+      const deletedItem = shaheedData[index];
+
+      fs.readFile(
+        path.join(__dirname, "../database/deletedItems.json"),
+        (err, data) => {
+          if (err) {
+            debug(err);
+          }
+          const deletedItems = JSON.parse(data);
+          deletedItems.push(deletedItem);
+          fs.writeFile(
+            path.join(__dirname, "../database/deletedItems.json"),
+            JSON.stringify(deletedItems),
+            (err) => {
+              if (err) debug(err);
+            }
+          );
+        }
+      );
+
       // Remove the shaheed from the data array
       shaheedData.splice(index, 1);
+
       // Write the updated data back to the JSON file
       fs.writeFile(shaheedFilePath, JSON.stringify(shaheedData), (err) => {
         if (err) {
