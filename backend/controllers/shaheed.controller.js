@@ -271,7 +271,12 @@ const editShaheed = (req, res) => {
         });
       });
     });
-  } catch (error) {}
+  } catch (error) {
+    // Log the error for debugging purposes
+    debug(error);
+    // Return a 500 Internal Server Error response
+    return res.status(500).json({ error: "Internal Server Error" });
+  }
 };
 
 /**
@@ -316,7 +321,12 @@ const deleteShaheed = (req, res) => {
         return res.status(202).json({ message: "Shaheed deleted" });
       });
     });
-  } catch (error) {}
+  } catch (error) {
+    // Log the error for debugging purposes
+    debug(error);
+    // Return a 500 Internal Server Error response
+    return res.status(500).json({ error: "Internal Server Error" });
+  }
 };
 
 // Export controller functions
