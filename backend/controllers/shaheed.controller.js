@@ -171,7 +171,108 @@ const createShaheed = (req, res) => {
  * @param {Object} req - Express request object
  * @param {Object} res - Express response object
  */
-const editShaheed = (req, res) => {};
+const editShaheed = (req, res) => {
+  try {
+    // Extract the shaheed ID from the request parameters
+    const { id } = req.params;
+    const {
+      personal_no,
+      rank,
+      service_no,
+      name,
+      father_name,
+      cnic_no,
+      unit,
+      place_of_posting,
+      dob,
+      doa,
+      dos,
+      family_member,
+      contact,
+      address,
+      fir_no,
+      under_section,
+      police_station,
+      brief_fact,
+      compensation_amount,
+      paid_date,
+    } = req.body;
+
+    // Read the contents of the shaheed JSON file
+    fs.readFile(shaheedFilePath, "utf-8", (err, data) => {
+      if (err) {
+        // Log the error for debugging purposes
+        debug(err);
+        // Return a 500 Internal Server Error
+        return res.status(500).json({ error: "Internal Server Error" });
+      }
+
+      // Parse the JSON data
+      const shaheedData = JSON.parse(data);
+      // Find the index of the shaheed with the matching ID
+      const shaheedIndex = shaheedData.findIndex(
+        (shaheed) => shaheed.id === Number(id)
+      );
+      // If no shaheed is found, return a 404 Not Found response
+      if (shaheedIndex === -1) {
+        debug("Shaheed not found");
+        return res.status(404).json({ error: "Shaheed not found" });
+      }
+
+      let file = shaheedData[shaheedIndex].photo;
+
+      if (req.file && shaheedData[shaheedIndex].photo !== "default.jpg") {
+        fs.unlink(
+          path.join(__dirname, `../../frontend/public/profiles/${file}`),
+          (err) => {
+            if (err) {
+              debug(err);
+            }
+          }
+        );
+      }
+
+      // Update the
+      shaheedData[shaheedIndex] = {
+        id: Number(id),
+        personal_no,
+        rank,
+        service_no,
+        name,
+        father_name,
+        cnic_no,
+        unit,
+        place_of_posting,
+        dob,
+        doa,
+        dos,
+        family_member,
+        contact,
+        address,
+        fir_no,
+        under_section,
+        police_station,
+        brief_fact,
+        compensation_amount,
+        paid_date,
+        photo: !req.file ? file : req.file.filename,
+      };
+
+      fs.writeFile(shaheedFilePath, JSON.stringify(shaheedData), (err) => {
+        if (err) {
+          // Log the error for debugging purposes
+          debug(err);
+          // Return a 500 Internal Server Error response
+          return res.status(500).json({ error: "Internal Server Error" });
+        }
+        // Return a 200 OK response with the updated shaheed data
+        return res.status(202).json({
+          message: "Shaheed updated successfully",
+        });
+      });
+    });
+  } catch (error) {}
+};
 
 /**
  * Deletes a shaheed record
