@@ -7,9 +7,13 @@ import { useNavigate } from "react-router-dom";
 
 
 function CreateShaheed() {
+    //` navigate for go back button
     const navigate = useNavigate()
+    //` notify function for notification 1
     const notify = () => toast.success('Profile Created Successfully!');
+    //` photo state
     const [photo, setPhoto] = useState("")
+    //` all inputs data state for controled components
     const [formData, setFormData] = useState({
         personal_no: "",
         rank: "",
@@ -33,7 +37,7 @@ function CreateShaheed() {
         paid_date: "",
     })
     const queryClient = useQueryClient();
-
+    //` create mutation function useMutation
     const createMutation = useMutation({
         mutationFn: (fD) => CShaheedData(fD),
         onSuccess: () => {
@@ -66,7 +70,7 @@ function CreateShaheed() {
     })
 
 
-
+    //` select options data
     const policeStation = [
         { label: "Clifton" },
         { label: "Boat Basin" },
@@ -130,11 +134,13 @@ function CreateShaheed() {
 
     ]
 
+    //` input onchange function
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData((prevData) => ({ ...prevData, [name]: value }));
     };
 
+    //` handleFileChange function for photo
     const handleFileChange = (e) => {
         const file = e.target.files[0];
         if (file) {
@@ -142,6 +148,7 @@ function CreateShaheed() {
         }
     };
 
+    //` handle submit
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -156,23 +163,23 @@ function CreateShaheed() {
     };
 
     return (
-        <div className="w-full min-h-screen flex items-center justify-center">
+        <div className="flex items-center justify-center w-full min-h-screen">
             <button
                 onClick={() => navigate("/")}
-                className="absolute top-5 left-5 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+                className="absolute px-4 py-2 font-bold text-white bg-blue-500 rounded top-5 left-5 hover:bg-blue-600"
             >
                 Go Back
             </button>
             <form onSubmit={handleSubmit} className="w-[80%]  flex items-center justify-start min-h-screen py-5 pt-10 px-5 flex-col">
-                <p className="text-3xl font-semibold mb-5 text-blue-500">Shaheed Data Form</p>
-                <div className="w-full flex items-center justify-between my-5">
+                <p className="mb-5 text-3xl font-semibold text-blue-500">Shaheed Data Form</p>
+                <div className="flex items-center justify-between w-full my-5">
                     <div className="flex flex-col w-[calc(100%/2.10)]">
                         <label>Personal No</label>
-                        <input type="text" name="personal_no" value={formData.personal_no} onChange={handleChange} placeholder="Personal No." className="pl-3 outline-none text-lg py-1 rounded shadow-lg" required />
+                        <input type="text" name="personal_no" value={formData.personal_no} onChange={handleChange} placeholder="Personal No." className="py-1 pl-3 text-lg rounded shadow-lg outline-none" required />
                     </div>
                     <div className="flex flex-col w-[calc(100%/2.10)]">
                         <label>Rank</label>
-                        <select name="rank" value={formData.rank} onChange={handleChange} className="w-full pl-3 outline-none text-lg py-1 rounded shadow-lg" required>
+                        <select name="rank" value={formData.rank} onChange={handleChange} className="w-full py-1 pl-3 text-lg rounded shadow-lg outline-none" required>
                             <option disabled value="">--Select--</option>
                             {
                                 ranks.map((rank, index) => {
@@ -184,30 +191,30 @@ function CreateShaheed() {
                         </select>
                     </div>
                 </div>
-                <div className="w-full flex items-center justify-between my-5">
+                <div className="flex items-center justify-between w-full my-5">
                     <div className="flex flex-col w-[calc(100%/2.10)]">
                         <label>Service No</label>
-                        <input name="service_no" value={formData.service_no} onChange={handleChange} type="text" placeholder="Service No." className="pl-3 outline-none text-lg py-1 rounded shadow-lg" required />
+                        <input name="service_no" value={formData.service_no} onChange={handleChange} type="text" placeholder="Service No." className="py-1 pl-3 text-lg rounded shadow-lg outline-none" required />
                     </div>
                     <div className="flex flex-col w-[calc(100%/2.10)]">
                         <label>Name</label>
-                        <input name="name" value={formData.name} onChange={handleChange} type="text" placeholder="Name" className="pl-3 outline-none text-lg py-1 rounded shadow-lg" required />
+                        <input name="name" value={formData.name} onChange={handleChange} type="text" placeholder="Name" className="py-1 pl-3 text-lg rounded shadow-lg outline-none" required />
                     </div>
                 </div>
-                <div className="w-full flex items-center justify-between my-5">
+                <div className="flex items-center justify-between w-full my-5">
                     <div className="flex flex-col w-[calc(100%/2.10)]">
                         <label>Father's Name</label>
-                        <input name="father_name" value={formData.father_name} onChange={handleChange} type="text" placeholder="Father's Name" className="pl-3 outline-none text-lg py-1 rounded shadow-lg" required />
+                        <input name="father_name" value={formData.father_name} onChange={handleChange} type="text" placeholder="Father's Name" className="py-1 pl-3 text-lg rounded shadow-lg outline-none" required />
                     </div>
                     <div className="flex flex-col w-[calc(100%/2.10)]">
                         <label>CNIC No</label>
-                        <input name="cnic_no" value={formData.cnic_no} onChange={handleChange} type="text" placeholder="CNIC No." className="pl-3 outline-none text-lg py-1 rounded shadow-lg" required />
+                        <input name="cnic_no" value={formData.cnic_no} onChange={handleChange} type="text" placeholder="CNIC No." className="py-1 pl-3 text-lg rounded shadow-lg outline-none" required />
                     </div>
                 </div>
-                <div className="w-full flex items-center justify-between my-5">
+                <div className="flex items-center justify-between w-full my-5">
                     <div className="flex flex-col w-[calc(100%/2.10)]">
                         <label>Unit</label>
-                        <select name="unit" value={formData.unit} onChange={handleChange} className="w-full pl-3 outline-none text-lg py-1 rounded shadow-lg" required>
+                        <select name="unit" value={formData.unit} onChange={handleChange} className="w-full py-1 pl-3 text-lg rounded shadow-lg outline-none" required>
                             <option disabled value="">--Select--</option>
                             {
                                 units.map((unit, index) => {
@@ -219,53 +226,53 @@ function CreateShaheed() {
                     </div>
                     <div className="flex flex-col w-[calc(100%/2.10)]">
                         <label>Place of Posting</label>
-                        <input name="place_of_posting" value={formData.place_of_posting} onChange={handleChange} type="text" placeholder="Place of Posting" className="pl-3 outline-none text-lg py-1 rounded shadow-lg" required />
+                        <input name="place_of_posting" value={formData.place_of_posting} onChange={handleChange} type="text" placeholder="Place of Posting" className="py-1 pl-3 text-lg rounded shadow-lg outline-none" required />
                     </div>
                 </div>
-                <div className="w-full flex items-center justify-between my-5">
+                <div className="flex items-center justify-between w-full my-5">
                     <div className="flex flex-col w-[calc(100%/2.10)]">
                         <label>Date of Birth</label>
-                        <input name="dob" value={formData.dob} onChange={handleChange} type="date" placeholder="Date of Birth" className="pl-3 outline-none text-lg py-1 rounded shadow-lg" required />
+                        <input name="dob" value={formData.dob} onChange={handleChange} type="date" placeholder="Date of Birth" className="py-1 pl-3 text-lg rounded shadow-lg outline-none" required />
                     </div>
                     <div className="flex flex-col w-[calc(100%/2.10)]">
                         <label>Date of Appointment</label>
-                        <input name="doa" value={formData.doa} onChange={handleChange} type="date" placeholder="Date of Appointment" className="pl-3 outline-none text-lg py-1 rounded shadow-lg" required />
+                        <input name="doa" value={formData.doa} onChange={handleChange} type="date" placeholder="Date of Appointment" className="py-1 pl-3 text-lg rounded shadow-lg outline-none" required />
                     </div>
                 </div>
-                <div className="w-full flex items-center justify-between my-5">
+                <div className="flex items-center justify-between w-full my-5">
                     <div className="flex flex-col w-[calc(100%/2.10)]">
                         <label>Date of Shahadat</label>
-                        <input name="dos" value={formData.dos} onChange={handleChange} type="date" placeholder="Date of Shahadat" className="pl-3 outline-none text-lg py-1 rounded shadow-lg" required />
+                        <input name="dos" value={formData.dos} onChange={handleChange} type="date" placeholder="Date of Shahadat" className="py-1 pl-3 text-lg rounded shadow-lg outline-none" required />
                     </div>
                     <div className="flex flex-col w-[calc(100%/2.10)]">
                         <label>Family Member</label>
-                        <input name="family_member" value={formData.family_member} onChange={handleChange} type="text" placeholder="Family Member" className="pl-3 outline-none text-lg py-1 rounded shadow-lg" required />
+                        <input name="family_member" value={formData.family_member} onChange={handleChange} type="text" placeholder="Family Member" className="py-1 pl-3 text-lg rounded shadow-lg outline-none" required />
                     </div>
                 </div>
-                <div className="w-full flex items-center justify-between my-5">
+                <div className="flex items-center justify-between w-full my-5">
                     <div className="flex flex-col w-[calc(100%/2.10)]">
                         <label>Contact</label>
-                        <input name="contact" value={formData.contact} onChange={handleChange} type="text" placeholder="Contact" className="pl-3 outline-none text-lg py-1 rounded shadow-lg" required />
+                        <input name="contact" value={formData.contact} onChange={handleChange} type="text" placeholder="Contact" className="py-1 pl-3 text-lg rounded shadow-lg outline-none" required />
                     </div>
                     <div className="flex flex-col w-[calc(100%/2.10)]">
                         <label>Address</label>
-                        <input name="address" value={formData.address} onChange={handleChange} type="text" placeholder="Address" className="pl-3 outline-none text-lg py-1 rounded shadow-lg" required />
+                        <input name="address" value={formData.address} onChange={handleChange} type="text" placeholder="Address" className="py-1 pl-3 text-lg rounded shadow-lg outline-none" required />
                     </div>
                 </div>
-                <div className="w-full flex items-center justify-between my-5">
+                <div className="flex items-center justify-between w-full my-5">
                     <div className="flex flex-col w-[calc(100%/2.10)]">
                         <label>FIR No</label>
-                        <input name="fir_no" value={formData.fir_no} onChange={handleChange} type="text" placeholder="FIR No" className="pl-3 outline-none text-lg py-1 rounded shadow-lg" required />
+                        <input name="fir_no" value={formData.fir_no} onChange={handleChange} type="text" placeholder="FIR No" className="py-1 pl-3 text-lg rounded shadow-lg outline-none" required />
                     </div>
                     <div className="flex flex-col w-[calc(100%/2.10)]">
                         <label>Under Section</label>
-                        <input name="under_section" value={formData.under_section} onChange={handleChange} type="text" placeholder="Under Section" className="pl-3 outline-none text-lg py-1 rounded shadow-lg" required />
+                        <input name="under_section" value={formData.under_section} onChange={handleChange} type="text" placeholder="Under Section" className="py-1 pl-3 text-lg rounded shadow-lg outline-none" required />
                     </div>
                 </div>
-                <div className="w-full flex items-center justify-between my-5">
+                <div className="flex items-center justify-between w-full my-5">
                     <div className="flex flex-col w-full">
                         <label>Police Station</label>
-                        <select onChange={handleChange} name="police_station" value={formData.police_station} className="w-full pl-3 outline-none text-lg py-1 rounded shadow-lg" required>
+                        <select onChange={handleChange} name="police_station" value={formData.police_station} className="w-full py-1 pl-3 text-lg rounded shadow-lg outline-none" required>
                             <option disabled value="">--Select--</option>
                             {
                                 policeStation.map((station, index) => {
@@ -276,30 +283,31 @@ function CreateShaheed() {
 
                     </div>
                 </div>
-                <div className="w-full flex items-center justify-between my-5">
+                <div className="flex items-center justify-between w-full my-5">
                     <div className="flex flex-col w-full">
                         <label>Brief Fact</label>
-                        <textarea onChange={handleChange} name="brief_fact" value={formData.brief_fact} type="text" placeholder="Brief Fact" className="pl-3 outline-none text-lg py-1 rounded shadow-lg" required />
+                        <textarea onChange={handleChange} name="brief_fact" value={formData.brief_fact} type="text" placeholder="Brief Fact" className="py-1 pl-3 text-lg rounded shadow-lg outline-none" required />
                     </div>
                 </div>
-                <div className="w-full flex items-center justify-between my-5">
+                <div className="flex items-center justify-between w-full my-5">
                     <div className="flex flex-col w-[calc(100%/2.10)]">
                         <label>Compensation Amount</label>
-                        <input name="compensation_amount" value={formData.compensation_amount} onChange={handleChange} type="text" placeholder="Compensation Amount" className="pl-3 outline-none text-lg py-1 rounded shadow-lg" required />
+                        <input name="compensation_amount" value={formData.compensation_amount} onChange={handleChange} type="text" placeholder="Compensation Amount" className="py-1 pl-3 text-lg rounded shadow-lg outline-none" required />
                     </div>
                     <div className="flex flex-col w-[calc(100%/2.10)]">
                         <label>Paid Date</label>
-                        <input name="paid_date" value={formData.paid_date} onChange={handleChange} type="date" placeholder="Paid Date" className="pl-3 outline-none text-lg py-1 rounded shadow-lg" required />
+                        <input name="paid_date" value={formData.paid_date} onChange={handleChange} type="date" placeholder="Paid Date" className="py-1 pl-3 text-lg rounded shadow-lg outline-none" required />
                     </div>
                 </div>
-                <div className="w-full flex items-center justify-between my-5">
-                    <div className="flex flex-col ">
-                        <label htmlFor="photo" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer inline-block">Photo</label>
-                        <input name="photo" value={formData.photo} onChange={handleFileChange} type="file" id="photo" placeholder="Compensation Amount" className="pl-3 outline-none text-lg py-1 rounded shadow-lg hidden" required />
+                <div className="flex items-center justify-between w-full my-5">
+                    <div className="flex items-center gap-5">
+                        <label htmlFor="photo" className="inline-block px-4 py-2 font-bold text-white bg-blue-500 rounded cursor-pointer hover:bg-blue-700">Photo</label>
+                        <input name="photo" value={formData.photo} onChange={handleFileChange} type="file" id="photo" placeholder="Compensation Amount" className="hidden py-1 pl-3 text-lg rounded shadow-lg outline-none" required />
+                        <img src={photo ? URL.createObjectURL(photo) : `/public/profiles/default.jpg`} className="w-[96px]" alt="" />
                     </div>
                 </div>
-                <div className="w-full flex items-center justify-center my-5">
-                    <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-xl text-white font-bold py-3 px-4 rounded w-full">
+                <div className="flex items-center justify-center w-full my-5">
+                    <button type="submit" className="w-full px-4 py-3 text-xl font-bold text-white bg-blue-500 rounded hover:bg-blue-700">
                         Submit
                     </button>
                 </div>
