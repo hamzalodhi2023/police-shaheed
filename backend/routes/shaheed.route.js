@@ -18,7 +18,7 @@ const upload = require("../middlewares/shaheed-multer.middleware");
 Router.get("/", getShaheed) // Get all shaheed records
   .get("/:id", getSingleShaheed) // Get a single shaheed record by ID
   .post("/create", upload.single("photo"), createShaheed) // Create a new shaheed record
-  .patch("/edit/:id", editShaheed) // Update an existing shaheed record
+  .patch("/edit/:id", upload.single("photo"), editShaheed) // Update an existing shaheed record
   .delete("/delete/:id", deleteShaheed); // Delete a shaheed record
 
 // Export the router for use in other parts of the application
