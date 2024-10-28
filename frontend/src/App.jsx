@@ -23,7 +23,7 @@ function App() {
         },
         {
           path: "/view",
-          element: <Home />,
+          element: localStorage.getItem("username") === "welfare-digpsz" && localStorage.getItem("password") === "$digpsz2024" ? < Home /> : <Login />,
         },
         {
           path: "/:urlId",
