@@ -20,7 +20,7 @@ const getShaheed = (req, res) => {
         // Log the error for debugging purposes
         debug(err);
         // Return a 500 Internal Server Error response
-        return res.status(500).json({ error: "Internal Server Error" });
+        return res.status(500).json({ message: "Internal Server Error" });
       }
       // Parse the JSON data
       const shaheedData = JSON.parse(data);
@@ -31,7 +31,7 @@ const getShaheed = (req, res) => {
     // Log any unexpected errors
     debug(error);
     // Return a 500 Internal Server Error response
-    return res.status(500).json({ error: "Internal Server Error" });
+    return res.status(500).json({ message: "Internal Server Error" });
   }
 };
 
@@ -52,7 +52,7 @@ const getSingleShaheed = (req, res) => {
         // Log the error for debugging purposes
         debug(err);
         // Return a 500 Internal Server Error response
-        return res.status(500).json({ error: "Internal Server Error" });
+        return res.status(500).json({ message: "Internal Server Error" });
       }
 
       // Parse the JSON data
@@ -64,7 +64,7 @@ const getSingleShaheed = (req, res) => {
       // If no shaheed is found, return a 404 Not Found response
       if (!shaheed) {
         debug("Shaheed not found");
-        return res.status(404).json({ error: "Shaheed not found" });
+        return res.status(404).json({ message: "Shaheed not found" });
       }
 
       // Return a 200 OK response with the found shaheed data
@@ -74,7 +74,7 @@ const getSingleShaheed = (req, res) => {
     // Log any unexpected errors
     debug(error);
     // Return a 500 Internal Server Error response
-    return res.status(500).json({ error: "Internal Server Error" });
+    return res.status(500).json({ message: "Internal Server Error" });
   }
 };
 
@@ -113,7 +113,7 @@ const createShaheed = (req, res) => {
         // Log the error for debugging purposes
         debug(err);
         // Return a 500 Internal Server Error response
-        return res.status(500).json({ error: "Internal Server Error" });
+        return res.status(500).json({ message: "Internal Server Error" });
       }
       // Parse the JSON data
       const shaheedData = JSON.parse(data);
@@ -152,7 +152,7 @@ const createShaheed = (req, res) => {
           // Log the error for debugging purposes
           debug(err);
           // Return a 500 Internal Server Error response
-          return res.status(500).json({ error: "Internal Server Error" });
+          return res.status(500).json({ message: "Internal Server Error" });
         }
         // Return a 201 Created response with the new shaheed data
         return res.status(201).json(newShaheed);
@@ -162,7 +162,7 @@ const createShaheed = (req, res) => {
     // Log the error for debugging purposes
     debug(error);
     // Return a 500 Internal Server Error response
-    return res.status(500).json({ error: "Internal Server Error" });
+    return res.status(500).json({ message: "Internal Server Error" });
   }
 };
 
@@ -221,7 +221,7 @@ const editShaheed = (req, res) => {
       !paid_date
     ) {
       // Return a 400 Bad Request response with an error message
-      return res.status(400).json({ error: "All fields are required" });
+      return res.status(400).json({ message: "All fields are required" });
     }
 
     // Read the contents of the shaheed JSON file
@@ -230,7 +230,7 @@ const editShaheed = (req, res) => {
         // Log the error for debugging purposes
         debug(err);
         // Return a 500 Internal Server Error
-        return res.status(500).json({ error: "Internal Server Error" });
+        return res.status(500).json({ message: "Internal Server Error" });
       }
 
       // Parse the JSON data
@@ -242,7 +242,7 @@ const editShaheed = (req, res) => {
       // If no shaheed is found, return a 404 Not Found response
       if (shaheedIndex === -1) {
         debug("Shaheed not found");
-        return res.status(404).json({ error: "Shaheed not found" });
+        return res.status(404).json({ message: "Shaheed not found" });
       }
 
       let file = shaheedData[shaheedIndex].photo;
@@ -289,7 +289,7 @@ const editShaheed = (req, res) => {
           // Log the error for debugging purposes
           debug(err);
           // Return a 500 Internal Server Error response
-          return res.status(500).json({ error: "Internal Server Error" });
+          return res.status(500).json({ message: "Internal Server Error" });
         }
         // Return a 200 OK response with the updated shaheed data
         return res.status(202).json({
@@ -301,7 +301,7 @@ const editShaheed = (req, res) => {
     // Log the error for debugging purposes
     debug(error);
     // Return a 500 Internal Server Error response
-    return res.status(500).json({ error: "Internal Server Error" });
+    return res.status(500).json({ message: "Internal Server Error" });
   }
 };
 
@@ -320,7 +320,7 @@ const deleteShaheed = (req, res) => {
         // Log the error for debugging purposes
         debug(err);
         // Return a 500 Internal Server Error response
-        return res.status(500).json({ error: "Internal Server Error" });
+        return res.status(500).json({ message: "Internal Server Error" });
       }
       // Parse the JSON data
       const shaheedData = JSON.parse(data);
@@ -331,7 +331,7 @@ const deleteShaheed = (req, res) => {
       // If no shaheed is found, return a 404 Not Found response
       if (index === -1) {
         debug("Shaheed not found");
-        return res.status(404).json({ error: "Shaheed not found" });
+        return res.status(404).json({ message: "Shaheed not found" });
       }
 
       // Store the deleted item before splicing
@@ -364,7 +364,7 @@ const deleteShaheed = (req, res) => {
           // Log the error for debugging purposes
           debug(err);
           // Return a 500 Internal Server Error response
-          return res.status(500).json({ error: "Internal Server Error" });
+          return res.status(500).json({ message: "Internal Server Error" });
         }
         // Return a 202 accepted response
         return res.status(202).json({ message: "Shaheed deleted" });
@@ -374,7 +374,7 @@ const deleteShaheed = (req, res) => {
     // Log the error for debugging purposes
     debug(error);
     // Return a 500 Internal Server Error response
-    return res.status(500).json({ error: "Internal Server Error" });
+    return res.status(500).json({ message: "Internal Server Error" });
   }
 };
 
