@@ -402,7 +402,7 @@ function ShaheedMap({ data = [] }) {
                                         <div className="flex items-center gap-5">
                                             <label htmlFor="photo" className="px-4 py-2 font-bold text-white bg-blue-500 rounded cursor-pointer hover:bg-blue-700 h-fit">Photo</label>
                                             <input name="photo" value={formData.photo} onChange={handleFileChange} type="file" id="photo" placeholder="Compensation Amount" className="hidden py-1 pl-3 text-lg rounded shadow-lg outline-none" />
-                                            <img src={disPhoto ? URL.createObjectURL(disPhoto) : `https://police-shaheed.vercel.app/profiles/${data.photo}`} className="w-[96px]" alt="" />
+                                            <img src={disPhoto ? URL.createObjectURL(disPhoto) : `https://police-shaheed.vercel.app/profiles/${item.photo}`} className="w-[96px]" alt="" />
                                         </div>
                                     </div>
                                     <div className="flex items-center justify-center w-full gap-5 my-5">
