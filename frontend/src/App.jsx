@@ -7,11 +7,11 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import CreateShaheed from './pages/CreateShaheed'
 import Login from './pages/Login'
+import { useState } from 'react'
 const queryClient = new QueryClient();
 
 function App() {
-
-  const routes = createBrowserRouter([
+  let routes = createBrowserRouter([
     {
       path: '/',
       element: <Layout />,
@@ -20,22 +20,37 @@ function App() {
         {
           path: '/',
           element: <Login />,
-        },
-        {
-          path: localStorage.getItem('username') === 'welfare-digpsz' && localStorage.getItem('password') === '$digpsz2024' ? "/view" : "/",
-          element: localStorage.getItem('username') === 'welfare-digpsz' && localStorage.getItem('password') === '$digpsz2024' ? <Home /> : <Login />,
-        },
-        {
-          path: localStorage.getItem('username') === 'welfare-digpsz' && localStorage.getItem('password') === '$digpsz2024' ? "/:urlId" : "/",
-          element: localStorage.getItem('username') === 'welfare-digpsz' && localStorage.getItem('password') === '$digpsz2024' ? <SingleView /> : <Login />,
-        },
-        {
-          path: localStorage.getItem('username') === 'welfare-digpsz' && localStorage.getItem('password') === '$digpsz2024' ? "/create" : "/",
-          element: localStorage.getItem('username') === 'welfare-digpsz' && localStorage.getItem('password') === '$digpsz2024' ? <CreateShaheed /> : <Login />,
         }
       ]
     },
   ])
+  if (localStorage.getItem('username') === 'welfare-digpsz' && localStorage.getItem('password') === '$digpsz2024') {
+    routes = createBrowserRouter([
+      {
+        path: '/',
+        element: <Layout />,
+        errorElement: <Error />,
+        children: [
+          {
+            path: '/',
+            element: <Login />,
+          },
+          {
+            path: "/view",
+            element: <Home />,
+          },
+          {
+            path: "/:urlId",
+            element: <SingleView />,
+          },
+          {
+            path: "/create",
+            element: <CreateShaheed />,
+          }
+        ]
+      },
+    ])
+  }
 
   return (
     <>
