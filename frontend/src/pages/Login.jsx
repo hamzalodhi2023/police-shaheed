@@ -9,7 +9,7 @@ function Login() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        if (username === 'hamza' && password === '56964') {
+        if (username === 'welfare-digpsz' && password === '$digpsz2024') {
             localStorage.setItem('username', username)
             localStorage.setItem('password', password)
             navigate('/view')

@@ -168,7 +168,7 @@ const createShaheed = (req, res) => {
           return res.status(500).json({ message: "Internal Server Error" });
         }
         // Return a 201 Created response with the new shaheed data
-        return res.status(201).json(newShaheed);
+        return res.status(201).json({ id: newShaheed.id });
       });
     });
   } catch (error) {
@@ -391,8 +391,20 @@ const deleteShaheed = (req, res) => {
           // Return a 500 Internal Server Error response
           return res.status(500).json({ message: "Internal Server Error" });
         }
+
+        fs.unlink(
+          path.join(
+            __dirname,
+            `../../frontend/public/profiles/${deletedItem.photo}`
+          ),
+          (err) => {
+            if (err) {
+              debug(err);
+            }
+          }
+        );
         // Return a 202 accepted response
-        return res.status(202).json({ message: "Shaheed deleted" });
+        return res.status(202).json({ message: "Shaheed deleted!" });
       });
     });
   } catch (error) {

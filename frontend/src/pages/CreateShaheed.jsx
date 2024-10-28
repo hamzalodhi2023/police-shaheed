@@ -40,7 +40,7 @@ function CreateShaheed() {
     //` create mutation function useMutation
     const createMutation = useMutation({
         mutationFn: (fD) => CShaheedData(fD),
-        onSuccess: () => {
+        onSuccess: (data) => {
             queryClient.invalidateQueries(["shaheed"]);
             setFormData({
                 personal_no: "",
@@ -66,6 +66,7 @@ function CreateShaheed() {
             })
             setPhoto(null)
             notify()
+            navigate(`/${data.id}`)
         },
     })
 
@@ -303,7 +304,7 @@ function CreateShaheed() {
                     <div className="flex items-center gap-5">
                         <label htmlFor="photo" className="inline-block px-4 py-2 font-bold text-white bg-blue-500 rounded cursor-pointer hover:bg-blue-700">Photo</label>
                         <input name="photo" value={formData.photo} onChange={handleFileChange} type="file" id="photo" placeholder="Compensation Amount" className="hidden py-1 pl-3 text-lg rounded shadow-lg outline-none" required />
-                        <img src={photo ? URL.createObjectURL(photo) : `/public/profiles/default.jpg`} className="w-[96px]" alt="" />
+                        <img src={photo ? URL.createObjectURL(photo) : `https://police-shaheed.vercel.app/profiles/default.jpg`} className="w-[96px]" alt="" />
                     </div>
                 </div>
                 <div className="flex items-center justify-center w-full my-5">

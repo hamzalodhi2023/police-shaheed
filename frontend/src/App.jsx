@@ -22,16 +22,16 @@ function App() {
           element: <Login />,
         },
         {
-          path: '/view',
-          element: localStorage.getItem('username') === 'hamza' && localStorage.getItem('password') === '56964' ? <Home /> : <Login />,
+          path: localStorage.getItem('username') === 'welfare-digpsz' && localStorage.getItem('password') === '$digpsz2024' ? "/view" : "/",
+          element: localStorage.getItem('username') === 'welfare-digpsz' && localStorage.getItem('password') === '$digpsz2024' ? <Home /> : <Login />,
         },
         {
-          path: '/:urlId',
-          element: localStorage.getItem('username') === 'hamza' && localStorage.getItem('password') === '56964' ? <SingleView /> : <Login />,
+          path: localStorage.getItem('username') === 'welfare-digpsz' && localStorage.getItem('password') === '$digpsz2024' ? "/:urlId" : "/",
+          element: localStorage.getItem('username') === 'welfare-digpsz' && localStorage.getItem('password') === '$digpsz2024' ? <SingleView /> : <Login />,
         },
         {
-          path: "/create",
-          element: localStorage.getItem('username') === 'hamza' && localStorage.getItem('password') === '56964' ? <CreateShaheed /> : <Login />,
+          path: localStorage.getItem('username') === 'welfare-digpsz' && localStorage.getItem('password') === '$digpsz2024' ? "/create" : "/",
+          element: localStorage.getItem('username') === 'welfare-digpsz' && localStorage.getItem('password') === '$digpsz2024' ? <CreateShaheed /> : <Login />,
         }
       ]
     },
