@@ -25,7 +25,7 @@ function SingleView() {
     })
 
     if (isPending) {
-        return <div className="w-full h-screen absolute flex items-center justify-center bg-transparent flex-col gap-10">
+        return <div className="absolute flex flex-col items-center justify-center w-full h-screen gap-10 bg-transparent">
             <RiseLoader
                 color="#2a489e"
                 loading={isPending}
@@ -38,7 +38,7 @@ function SingleView() {
     }
 
     if (isError) {
-        return <div className="w-full h-screen absolute flex items-center justify-center bg-transparent flex-col gap-10">
+        return <div className="absolute flex flex-col items-center justify-center w-full h-screen gap-10 bg-transparent">
             <p className="text-xl">Error: {error.message}</p>
         </div>
     }
@@ -68,18 +68,18 @@ function SingleView() {
         <>
             {/* conformation div */}
             <div className={`w-full h-screen overflow-hidden fixed ${showConfirmation === true ? "flex" : "hidden"} items-center justify-center bg-black bg-opacity-50`}>
-                <div className="bg-white p-6 rounded-lg shadow-lg">
-                    <h2 className="text-xl font-bold mb-4">Confirm Deletion</h2>
+                <div className="p-6 bg-white rounded-lg shadow-lg">
+                    <h2 className="mb-4 text-xl font-bold">Confirm Deletion</h2>
                     <p className="mb-4">Are you sure you want to delete this profile?</p>
                     <div className="flex justify-end">
                         <button
-                            className="px-4 py-2 bg-gray-300 text-gray-700 rounded mr-2"
+                            className="px-4 py-2 mr-2 text-gray-700 bg-gray-300 rounded"
                             onClick={() => setShowConfirmation(false)}
                         >
                             Cancel
                         </button>
                         <button
-                            className="px-4 py-2 bg-red-500 text-white rounded"
+                            className="px-4 py-2 text-white bg-red-500 rounded"
                             onClick={() => {
                                 deleteMutation.mutate(urlId)
                                 notify()
@@ -94,22 +94,22 @@ function SingleView() {
             <div className={`${showConfirmation === true ? "w-full h-screen overflow-hidden" : "w-full overflow-auto h-auto"} pt-10 px-10`}>
                 <button
                     onClick={() => navigate(-1)}
-                    className="mb-4 ml-10 px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded"
+                    className="px-4 py-2 mb-4 ml-10 text-white bg-blue-500 rounded hover:bg-blue-700"
                 >
                     Go Back
                 </button>
                 {/* image div */}
-                <div className="mb-6 w-full pl-10">
+                <div className="w-full pl-10 mb-6">
                     <h1 className="text-3xl font-bold ">Shaheed Profile</h1>
                     <p>DIGP South Zone, Karachi <br />
                         Welfare Branch
                     </p>
-                    <img src={`/public/profiles/${photo}`} alt={name} className="mt-5 w-[96px]" />
+                    <img src={`https://police-shaheed.vercel.app/profiles/${photo}`} alt={name} className="mt-5 w-[96px]" />
                 </div>
                 {/* image div */}
                 <div className="w-full px-10 mb-10">
                     <h1 className="text-2xl font-semibold mb-5 text-blue-500 border-b-[1px]">Shaheed Detail:</h1>
-                    <div className="w-full flex my-5 items-center justify-between">
+                    <div className="flex items-center justify-between w-full my-5">
                         <div className="w-1/3">
                             <label className="font-semibold" >ID:</label>
                             <p>{id}</p>
@@ -123,7 +123,7 @@ function SingleView() {
                             <p>{rank}</p>
                         </div>
                     </div>
-                    <div className="w-full flex my-5 items-center justify-between">
+                    <div className="flex items-center justify-between w-full my-5">
                         <div className="w-1/3">
                             <label className="font-semibold" >Service No:</label>
                             <p>{service_no}</p>
@@ -137,7 +137,7 @@ function SingleView() {
                             <p>{father_name}</p>
                         </div>
                     </div>
-                    <div className="w-full flex my-5 items-center justify-between">
+                    <div className="flex items-center justify-between w-full my-5">
                         <div className="w-1/3">
                             <label className="font-semibold" >CNIC No:</label>
                             <p>{cnic_no}</p>
@@ -151,7 +151,7 @@ function SingleView() {
                             <p>{place_of_posting}</p>
                         </div>
                     </div>
-                    <div className="w-full flex my-5 items-center justify-between">
+                    <div className="flex items-center justify-between w-full my-5">
                         <div className="w-1/3">
                             <label className="font-semibold" >D.O.B:</label>
                             <p>{dob}</p>
@@ -168,7 +168,7 @@ function SingleView() {
                 </div>
                 <div className="w-full px-10 mb-10">
                     <h1 className="text-2xl font-semibold mb-5 text-blue-500 border-b-[1px]">Family Detail:</h1>
-                    <div className="w-full flex my-5 items-center justify-between">
+                    <div className="flex items-center justify-between w-full my-5">
                         <div className="w-1/3">
                             <label className="font-semibold" >Name Family Member with Relation:</label>
                             <p>{family_member}</p>
@@ -187,7 +187,7 @@ function SingleView() {
                 </div>
                 <div className="w-full px-10 mb-10">
                     <h1 className="text-2xl font-semibold mb-5 text-blue-500 border-b-[1px]">FIR Detail:</h1>
-                    <div className="w-full flex my-5 items-center justify-between">
+                    <div className="flex items-center justify-between w-full my-5">
                         <div className="w-1/3">
                             <label className="font-semibold" >FIR No:</label>
                             <p>{fir_no}</p>
@@ -203,7 +203,7 @@ function SingleView() {
                             </p>
                         </div>
                     </div>
-                    <div className="w-full flex my-5 items-center justify-between">
+                    <div className="flex items-center justify-between w-full my-5">
                         <div className="w-full">
                             <label className="font-semibold" >Brief Facts:</label>
                             <p className="text-justify">
@@ -214,7 +214,7 @@ function SingleView() {
                 </div>
                 <div className="w-full px-10">
                     <h1 className="text-2xl font-semibold mb-5 text-blue-500 border-b-[1px]">Compensation Detail:</h1>
-                    <div className="w-full flex my-5 items-center justify-start">
+                    <div className="flex items-center justify-start w-full my-5">
                         <div className="w-1/3">
                             <label className="font-semibold" >Compensation Amount:</label>
                             <p>{compensation_amount}</p>
@@ -227,7 +227,7 @@ function SingleView() {
                             <button
                                 onClick={() => setShowConfirmation(true)}
 
-                                className="px-4 py-2 bg-red-500 hover:bg-red-700 text-white rounded"
+                                className="px-4 py-2 text-white bg-red-500 rounded hover:bg-red-700"
                             >
                                 Delete
                             </button>
