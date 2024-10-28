@@ -85,7 +85,7 @@ const getSingleShaheed = (req, res) => {
  * @returns {Object} JSON response with new shaheed data or error message
  */
 const createShaheed = (req, res) => {
-  const {
+  let {
     personal_no,
     rank,
     service_no,
