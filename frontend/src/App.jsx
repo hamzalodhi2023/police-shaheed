@@ -30,7 +30,7 @@ function App() {
           element: <SingleView />,
         },
         {
-          path: "/create",
+          path: "/asdfasdfa454sdfasf5sadf465",
           element: <CreateShaheed />,
         }
       ]
