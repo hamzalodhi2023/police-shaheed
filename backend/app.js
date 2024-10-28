@@ -20,7 +20,7 @@ const PORT = process.env.PORT;
 // Middleware setup
 app.use(
   cors({
-    origin: "https://police-shaheed.vercel.app",
+    origin: ["https://police-shaheed.vercel.app"],
     methods: ["GET", "POST", "PATCH", "DELETE"],
     credentials: true,
   })
