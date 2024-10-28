@@ -27,7 +27,7 @@ app.use(
   })
 );
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 
 // Route setup
 app.use("/api/shaheed", shaheedRoute);
