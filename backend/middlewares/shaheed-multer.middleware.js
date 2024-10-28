@@ -1,7 +1,10 @@
 const multer = require("multer");
 const path = require("path");
 
-const profileFolderPath = path.join(__dirname, "../../frontend/profiles/");
+const profileFolderPath = path.join(
+  __dirname,
+  "../../frontend/public/profiles/"
+);
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
