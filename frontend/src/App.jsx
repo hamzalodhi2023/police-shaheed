@@ -1,4 +1,3 @@
-
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Home from './pages/Home'
 import SingleView from './pages/SingleView'
@@ -7,9 +6,11 @@ import Layout from './components/layout/Layout'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import CreateShaheed from './pages/CreateShaheed'
+import Login from './pages/Login'
 const queryClient = new QueryClient();
 
 function App() {
+
   const routes = createBrowserRouter([
     {
       path: '/',
@@ -18,19 +19,24 @@ function App() {
       children: [
         {
           path: '/',
-          element: <Home />,
+          element: localStorage.getItem('username') === 'hamza' && localStorage.getItem('password') === '56964' ? <Home /> : <Login />,
+        },
+        {
+          path: '/view',
+          element: localStorage.getItem('username') === 'hamza' && localStorage.getItem('password') === '56964' ? <Home /> : <Login />,
         },
         {
           path: '/:urlId',
-          element: <SingleView />,
+          element: localStorage.getItem('username') === 'hamza' && localStorage.getItem('password') === '56964' ? <SingleView /> : <Login />,
         },
         {
           path: "/create",
-          element: <CreateShaheed />,
+          element: localStorage.getItem('username') === 'hamza' && localStorage.getItem('password') === '56964' ? <CreateShaheed /> : <Login />,
         }
       ]
     },
   ])
+
   return (
     <>
       <QueryClientProvider client={queryClient}>
