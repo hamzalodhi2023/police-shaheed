@@ -10,8 +10,7 @@ import Login from './pages/Login'
 const queryClient = new QueryClient();
 
 function App() {
-
-  const routes = createBrowserRouter([
+  let routes = createBrowserRouter([
     {
       path: '/',
       element: <Layout />,
@@ -21,21 +20,38 @@ function App() {
           path: '/',
           element: <Login />,
         },
-        {
-          path: "/view",
-          element: < Home />,
-        },
-        {
-          path: "/:urlId",
-          element: <SingleView />,
-        },
-        {
-          path: "/create",
-          element: <CreateShaheed />,
-        }
       ]
     },
   ])
+  if (localStorage.getItem('username') === 'welfare-digpsz' && localStorage.getItem('password') === '$digpsz2024') {
+    routes = createBrowserRouter([
+      {
+        path: '/',
+        element: <Layout />,
+        errorElement: <Error />,
+        children: [
+          {
+            path: '/',
+            element: <Login />,
+          },
+          {
+            path: "/view",
+            element: <Home />,
+          },
+          {
+            path: "/:urlId",
+            element: <SingleView />,
+          },
+          {
+            path: "/create",
+            element: <CreateShaheed />,
+          }
+        ]
+      },
+    ])
+
+  }
+
 
 
   return (
