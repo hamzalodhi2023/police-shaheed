@@ -108,16 +108,16 @@ const createShaheed = (req, res) => {
     paid_date,
   } = req.body;
 
-  const [doaD, doaM, doaY] = doa.split("-");
+  const [doaY, doaM, doaD] = doa.split("-");
   doa = `${doaD}-${doaM}-${doaY}`;
 
-  const [dosD, dosM, dosY] = dos.split("-");
+  const [dosY, dosM, dosD] = dos.split("-");
   dos = `${dosD}-${dosM}-${dosY}`;
 
-  const [dobD, dobM, dobY] = dob.split("-");
+  const [dobY, dobM, dobD] = dob.split("-");
   dob = `${dobD}-${dobM}-${dobY}`;
 
-  const [pdD, pdM, pdY] = paid_date.split("-");
+  const [pdY, pdM, pdD] = paid_date.split("-");
   paid_date = `${pdD}-${pdM}-${pdY}`;
 
   try {
