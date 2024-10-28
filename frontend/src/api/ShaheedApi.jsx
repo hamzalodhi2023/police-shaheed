@@ -65,7 +65,7 @@ export const EShaheedData = async ({ fD, id }) => {
             throw new Error("Failed to update post");
         }
     } catch (error) {
-        console.error(`Error updating Shaheed data for ID ${id}:`, error.response || error.message);
+        console.log(`Error updating Shaheed data for ID ${id}:`, error.response || error.message);
         return [];
     }
 };
