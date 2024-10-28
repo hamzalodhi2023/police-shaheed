@@ -15,7 +15,7 @@ const shaheedFilePath = path.join(__dirname, "/public/shaheed.json");
 const getShaheed = (req, res) => {
   try {
     // Read the contents of the shaheed JSON file
-    fs.readFile(shaheedFilePath, "utf-8", (err, data) => {
+    fs.readFile("/public/shaheed.json", "utf-8", (err, data) => {
       if (err) {
         // Log the error for debugging purposes
         debug(err);
