@@ -19,7 +19,7 @@ function App() {
       children: [
         {
           path: '/',
-          element: localStorage.getItem('username') === 'hamza' && localStorage.getItem('password') === '56964' ? <Home /> : <Login />,
+          element: <Login />,
         },
         {
           path: '/view',
