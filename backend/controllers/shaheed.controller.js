@@ -198,6 +198,32 @@ const editShaheed = (req, res) => {
       paid_date,
     } = req.body;
 
+    if (
+      !personal_no ||
+      !rank ||
+      !service_no ||
+      !name ||
+      !father_name ||
+      !cnic_no ||
+      !unit ||
+      !place_of_posting ||
+      !dob ||
+      !doa ||
+      !dos ||
+      !family_member ||
+      !contact ||
+      !address ||
+      !fir_no ||
+      !under_section ||
+      !police_station ||
+      !brief_fact ||
+      !compensation_amount ||
+      !paid_date
+    ) {
+      // Return a 400 Bad Request response with an error message
+      return res.status(400).json({ error: "All fields are required" });
+    }
+
     // Read the contents of the shaheed JSON file
     fs.readFile(shaheedFilePath, "utf-8", (err, data) => {
       if (err) {
