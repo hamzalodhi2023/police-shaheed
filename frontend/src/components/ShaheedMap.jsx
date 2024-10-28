@@ -210,7 +210,7 @@ function ShaheedMap({ data = [] }) {
                         {dos}
                     </td>
                     <td className="py-2 px-4 border-b text-[12px] text-center">
-                        <img src={`/public/profiles/${photo}`} className="w-[96px] " alt={name} />
+                        <img src={`https://police-shaheed.vercel.app/profiles/${photo}`} className="w-[96px] " alt={name} />
                     </td>
                     <td className="py-2 px-4 border-b text-[15px] text-center">
                         <NavLink to={`/${id}`} >
