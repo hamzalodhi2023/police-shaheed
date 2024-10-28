@@ -57,8 +57,6 @@ export const EShaheedData = async (fD) => {
     const { id } = fD
     try {
         const res = await api.patch(`/shaheed/edit/${id}`, fD);
-        console.log("form data api", fD)
-        console.log(id)
         if (res.status === 202) {
             return res.data;
         } else {

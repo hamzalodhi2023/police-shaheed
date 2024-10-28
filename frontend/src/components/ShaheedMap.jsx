@@ -139,9 +139,8 @@ function ShaheedMap({ data = [] }) {
             fD.append(key, value)
 
         })
-        console.log(fD)
         fD.append("photo", disPhoto)
-        editMutation.mutate({ ...fD, id: id })
+        editMutation.mutate(fD, { id: id })
     };
     return (
         <>
