@@ -188,7 +188,7 @@ const editShaheed = (req, res) => {
   try {
     // Extract the shaheed ID from the request parameters
     const { id } = req.params;
-    const {
+    let {
       personal_no,
       rank,
       service_no,
@@ -236,6 +236,18 @@ const editShaheed = (req, res) => {
       // Return a 400 Bad Request response with an error message
       return res.status(400).json({ message: "All fields are required" });
     }
+
+    const [doaY, doaM, doaD] = doa.split("-");
+    doa = `${doaD}-${doaM}-${doaY}`;
+
+    const [dosY, dosM, dosD] = dos.split("-");
+    dos = `${dosD}-${dosM}-${dosY}`;
+
+    const [dobY, dobM, dobD] = dob.split("-");
+    dob = `${dobD}-${dobM}-${dobY}`;
+
+    const [pdY, pdM, pdD] = paid_date.split("-");
+    paid_date = `${pdD}-${pdM}-${pdY}`;
 
     // Read the contents of the shaheed JSON file
     fs.readFile(shaheedFilePath, "utf-8", (err, data) => {
