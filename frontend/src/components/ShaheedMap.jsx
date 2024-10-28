@@ -21,7 +21,7 @@ function ShaheedMap({ data = [] }) {
     //` create mutation function useMutation
     const editMutation = useMutation({
         mutationFn: ({ fD, id }) => EShaheedData({ fD, id }),
-        onSuccess: (data) => {
+        onSuccess: () => {
             queryClient.invalidateQueries(["shaheed"]);
             setFormDis(false)
             notify()
@@ -208,7 +208,7 @@ function ShaheedMap({ data = [] }) {
                     </td>
                     <td className="py-2 px-4 border-b text-[12px] text-center">
                         {dos}
-                    </td>
+                    </td>   
                     <td className="py-2 px-4 border-b text-[12px] text-center">
                         <img src={`https://police-shaheed.vercel.app/profiles/${photo}`} className="w-[96px] " alt={name} />
                     </td>
