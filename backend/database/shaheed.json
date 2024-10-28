@@ -190,29 +190,5 @@
     "compensation_amount": "1000000",
     "paid_date": "09-12-2022",
     "photo": "default.jpg"
-  },
-  {
-    "id": 9,
-    "personal_no": "asdf",
-    "rank": "DIGP",
-    "service_no": "asdf",
-    "name": "asdf",
-    "father_name": "asdf",
-    "cnic_no": "asdf",
-    "unit": "INV-II",
-    "place_of_posting": "asdf",
-    "dob": "2024-10-31",
-    "doa": "2024-10-11",
-    "dos": "2024-10-24",
-    "family_member": "asdf",
-    "contact": "asdf",
-    "address": "asdf",
-    "fir_no": "asdf",
-    "under_section": "asdf",
-    "police_station": "Defence",
-    "brief_fact": "asdf",
-    "compensation_amount": "asdf",
-    "paid_date": "2024-10-11",
-    "photo": "1730405417596.jpeg"
   }
 ]
