@@ -14,7 +14,6 @@ function SingleView() {
     const deleteMutation = useMutation({
         mutationFn: (urlId) => DShaheedData(urlId),
         onSuccess: (data) => {
-            console.log(data)
             queryClient.invalidateQueries(["shaheed"]);
             navigate("/")
         }

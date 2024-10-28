@@ -41,7 +41,6 @@ function CreateShaheed() {
     const createMutation = useMutation({
         mutationFn: (fD) => CShaheedData(fD),
         onSuccess: (data) => {
-            console.log(data)
             queryClient.invalidateQueries(["shaheed"]);
             setFormData({
                 personal_no: "",

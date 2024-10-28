@@ -22,12 +22,12 @@ app.use(
   cors({
     origin: ["https://police-shaheed.vercel.app"],
     // origin: ["http://localhost:5173"],
-    methods: ["GET", "POST", "PATCH", "DELETE"],
+    methods: ["GET", "POST", "PATCH", "DELETE", "OPTIONS", "PUT"],
     credentials: true,
   })
 );
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 
 // Route setup
 app.use("/api/shaheed", shaheedRoute);

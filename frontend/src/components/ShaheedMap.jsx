@@ -22,7 +22,6 @@ function ShaheedMap({ data = [] }) {
     const editMutation = useMutation({
         mutationFn: ({ fD, id }) => EShaheedData({ fD, id }),
         onSuccess: (data) => {
-            console.log(data)
             queryClient.invalidateQueries(["shaheed"]);
             setFormDis(false)
             notify()
