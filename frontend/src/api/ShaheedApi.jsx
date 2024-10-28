@@ -53,8 +53,8 @@ export const DShaheedData = async (urlId) => {
     }
 }
 
-export const EShaheedData = async (fD) => {
-    const { id } = fD
+export const EShaheedData = async ({ fD, id }) => {
+    console.log(fD)
     try {
         const res = await api.patch(`/shaheed/edit/${id}`, fD);
         if (res.status === 202) {
@@ -63,7 +63,7 @@ export const EShaheedData = async (fD) => {
             throw new Error("Failed to update post");
         }
     } catch (error) {
-        console.log(error)
-        return []
+        console.error(`Error updating Shaheed data for ID ${id}:`, error.response || error.message);
+        return [];
     }
-}
+};

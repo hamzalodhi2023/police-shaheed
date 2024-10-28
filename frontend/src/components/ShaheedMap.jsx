@@ -10,14 +10,17 @@ import { EShaheedData } from "../api/ShaheedApi";
 function ShaheedMap({ data = [] }) {
 
     const [id, setId] = useState("")
+
     //` notify function for notification 1
     const notify = () => toast.success('Profile Edit Successfully!');
+
     //` form hidden and display state
     const [formDis, setFormDis] = useState(false)
     const queryClient = useQueryClient();
+
     //` create mutation function useMutation
     const editMutation = useMutation({
-        mutationFn: (fD) => EShaheedData(fD),
+        mutationFn: ({ fD, id }) => EShaheedData({ fD, id }),
         onSuccess: () => {
             queryClient.invalidateQueries(["shaheed"]);
             setFormDis(false)
@@ -137,10 +140,9 @@ function ShaheedMap({ data = [] }) {
 
         Object.entries(formData).map(([key, value]) => {
             fD.append(key, value)
-
         })
         fD.append("photo", disPhoto)
-        editMutation.mutate(fD, { id: id })
+        editMutation.mutate({ fD, id })
     };
     return (
         <>
