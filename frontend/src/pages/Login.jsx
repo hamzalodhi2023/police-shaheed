@@ -13,7 +13,6 @@ function Login() {
             localStorage.setItem('username', username)
             localStorage.setItem('password', password)
             navigate('/view')
-            // window.location.reload()
         }
     }
 
