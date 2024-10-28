@@ -7,7 +7,6 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import CreateShaheed from './pages/CreateShaheed'
 import Login from './pages/Login'
-import { useState } from 'react'
 const queryClient = new QueryClient();
 
 function App() {
@@ -24,6 +23,7 @@ function App() {
       ]
     },
   ])
+
   if (localStorage.getItem('username') === 'welfare-digpsz' && localStorage.getItem('password') === '$digpsz2024') {
     routes = createBrowserRouter([
       {
