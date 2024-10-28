@@ -107,6 +107,19 @@ const createShaheed = (req, res) => {
     compensation_amount,
     paid_date,
   } = req.body;
+
+  const [doaD, doaM, doaY] = doa.split("-");
+  doa = `${doaD}-${doaM}-${doaY}`;
+
+  const [dosD, dosM, dosY] = dos.split("-");
+  dos = `${dosD}-${dosM}-${dosY}`;
+
+  const [dobD, dobM, dobY] = dob.split("-");
+  dob = `${dobD}-${dobM}-${dobY}`;
+
+  const [pdD, pdM, pdY] = paid_date.split("-");
+  paid_date = `${pdD}-${pdM}-${pdY}`;
+
   try {
     fs.readFile(shaheedFilePath, "utf-8", (err, data) => {
       if (err) {
