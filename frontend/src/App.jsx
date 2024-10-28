@@ -22,7 +22,7 @@ function App() {
           element: <Login />,
         },
         {
-          path: "/21as23df4asd1f32",
+          path: "/view",
           element: <Home />,
         },
         {
@@ -30,7 +30,7 @@ function App() {
           element: <SingleView />,
         },
         {
-          path: "/asdfasdfa454sdfasf5sadf465",
+          path: "/create",
           element: <CreateShaheed />,
         }
       ]
