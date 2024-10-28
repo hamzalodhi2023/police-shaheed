@@ -1,11 +1,29 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { MdEditSquare } from "react-icons/md";
 import { NavLink } from "react-router-dom";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { EShaheedData } from "../api/ShaheedApi";
+
 function ShaheedMap({ data = [] }) {
+
+    const [id, setId] = useState("")
+    //` notify function for notification 1
+    const notify = () => toast.success('Profile Edit Successfully!');
     //` form hidden and display state
     const [formDis, setFormDis] = useState(false)
-    //` form inputs data
+    const queryClient = useQueryClient();
+    //` create mutation function useMutation
+    const editMutation = useMutation({
+        mutationFn: (fD) => EShaheedData(fD),
+        onSuccess: () => {
+            queryClient.invalidateQueries(["shaheed"]);
+            setFormDis(false)
+            notify()
+        },
+    })
     //` all inputs data state for controled components
     const [formData, setFormData] = useState({
         personal_no: "",
@@ -121,8 +139,9 @@ function ShaheedMap({ data = [] }) {
             fD.append(key, value)
 
         })
+        console.log(fD)
         fD.append("photo", disPhoto)
-        createMutation.mutate(fD)
+        editMutation.mutate({ ...fD, id: id })
     };
     return (
         <>
@@ -235,6 +254,7 @@ function ShaheedMap({ data = [] }) {
                                     paid_date: conPd,
                                 }
                             )
+                            setId(id)
                         }} className="px-2 py-1 m-2 font-bold text-white bg-green-500 rounded hover:bg-green-700">
                             <MdEditSquare />
                         </button>
@@ -388,6 +408,7 @@ function ShaheedMap({ data = [] }) {
                                         <button onClick={() => {
                                             setFormDis(false)
                                             setFormData({
+                                                id,
                                                 personal_no: "",
                                                 rank: "",
                                                 service_no: "",
