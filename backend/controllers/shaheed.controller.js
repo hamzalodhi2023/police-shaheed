@@ -4,7 +4,7 @@ const path = require("path");
 const debug = require("debug")("development:controller:shaheed");
 
 // Path to the JSON file containing shaheed data
-const shaheedFilePath = path.join(__dirname, "../database/shaheed.json");
+const shaheedFilePath = path.join(__dirname, "/public/shaheed.json");
 
 /**
  * Retrieves all shaheed data from the JSON file
@@ -363,7 +363,7 @@ const deleteShaheed = (req, res) => {
       const deletedItem = shaheedData[index];
 
       fs.readFile(
-        path.join(__dirname, "../database/deletedItems.json"),
+        path.join(__dirname, "/public/deletedItems.json"),
         (err, data) => {
           if (err) {
             debug(err);
@@ -371,7 +371,7 @@ const deleteShaheed = (req, res) => {
           const deletedItems = JSON.parse(data);
           deletedItems.push(deletedItem);
           fs.writeFile(
-            path.join(__dirname, "../database/deletedItems.json"),
+            path.join(__dirname, "/public/deletedItems.json"),
             JSON.stringify(deletedItems),
             (err) => {
               if (err) debug(err);
