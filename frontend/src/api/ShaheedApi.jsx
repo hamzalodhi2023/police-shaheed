@@ -2,8 +2,8 @@ import axios from 'axios'
 
 axios.defaults.withCredentials = true;
 const api = axios.create({
-    baseURL: "https://police-shaheed-api.vercel.app/api",
-    // baseURL: "http://localhost:8080/api",
+    // baseURL: "https://police-shaheed-api.vercel.app/api",
+    baseURL: "http://localhost:8080/api",
 });
 
 
