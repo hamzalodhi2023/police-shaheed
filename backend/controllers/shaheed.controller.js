@@ -273,14 +273,11 @@ const editShaheed = (req, res) => {
       let file = shaheedData[shaheedIndex].photo;
 
       if (req.file && shaheedData[shaheedIndex].photo !== "default.jpg") {
-        fs.unlink(
-          path.join(__dirname, `../../frontend/public/profiles/${file}`),
-          (err) => {
-            if (err) {
-              debug(err);
-            }
+        fs.unlink(path.join(__dirname, `/public/profiles/${file}`), (err) => {
+          if (err) {
+            debug(err);
           }
-        );
+        });
       }
 
       // Update the
@@ -393,10 +390,7 @@ const deleteShaheed = (req, res) => {
         }
 
         fs.unlink(
-          path.join(
-            __dirname,
-            `../../frontend/public/profiles/${deletedItem.photo}`
-          ),
+          path.join(__dirname, `/public/profiles/${deletedItem.photo}`),
           (err) => {
             if (err) {
               debug(err);
