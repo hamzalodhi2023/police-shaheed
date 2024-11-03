@@ -391,8 +391,11 @@ const deleteShaheed = (req, res) => {
         }
 
         fse.move(
-          `../public/profiles/${deletedItem.photo}`,
-          `../public/deleted-profiles/${deletedItem.photo}`,
+          path.join(__dirname, `../public/profiles/${deletedItem.photo}`),
+          path.join(
+            __dirname,
+            `../public/deleted-profiles/${deletedItem.photo}`
+          ),
           (err) => {
             if (err) {
               // Log the error for debugging purposes
