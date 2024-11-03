@@ -1,5 +1,6 @@
 // Required modules
 const fs = require("fs");
+const fse = require("fs-extra");
 const path = require("path");
 const debug = require("debug")("development:controller:shaheed");
 
@@ -389,13 +390,9 @@ const deleteShaheed = (req, res) => {
           return res.status(500).json({ message: "Internal Server Error" });
         }
 
-        fs.unlink(
-          path.join(__dirname, `../public/profiles/${deletedItem.photo}`),
-          (err) => {
-            if (err) {
-              debug(err);
-            }
-          }
+        fse.moveSync(
+          `../public/profiles/${deletedItem.photo}`,
+          "../public/deleted-profiles/"
         );
         // Return a 202 accepted response
         return res.status(202).json({ message: "Shaheed deleted!" });
