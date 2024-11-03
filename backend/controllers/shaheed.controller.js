@@ -273,7 +273,7 @@ const editShaheed = (req, res) => {
       let file = shaheedData[shaheedIndex].photo;
 
       if (req.file && shaheedData[shaheedIndex].photo !== "default.jpg") {
-        fs.unlink(path.join(__dirname, `/public/profiles/${file}`), (err) => {
+        fs.unlink(path.join(__dirname, `/profiles/${file}`), (err) => {
           if (err) {
             debug(err);
           }
@@ -390,7 +390,7 @@ const deleteShaheed = (req, res) => {
         }
 
         fs.unlink(
-          path.join(__dirname, `/public/profiles/${deletedItem.photo}`),
+          path.join(__dirname, `/profiles/${deletedItem.photo}`),
           (err) => {
             if (err) {
               debug(err);
