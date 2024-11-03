@@ -3,12 +3,14 @@ import { useQuery } from "@tanstack/react-query";
 import { GetShaheedData } from "../api/ShaheedApi";
 import RiseLoader from "react-spinners/RiseLoader";
 import ShaheedMap from "../components/ShaheedMap";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+
 function Home() {
   const { data, isPending, error, isError } = useQuery({
     queryKey: ["shaheed"],
     queryFn: GetShaheedData,
   });
+  const navigate = useNavigate();
 
   if (isPending) {
     return (
@@ -40,6 +42,7 @@ function Home() {
           <button
             onClick={() => {
               localStorage.clear();
+              navigate("/");
             }}
             className="m-5 rounded bg-red-500 px-6 py-2 font-bold text-white hover:bg-red-700"
           >
