@@ -598,7 +598,7 @@ function ShaheedMap({ data = [] }) {
                           src={
                             disPhoto
                               ? URL.createObjectURL(disPhoto)
-                              : `http://police-shaheed.zubizshop.com/profiles/${item.photo}`
+                              : `http://police-shaheed.zubizshop.com/profiles/${formData.photo}`
                           }
                           className="w-[96px]"
                           alt=""
