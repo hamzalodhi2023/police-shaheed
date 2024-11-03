@@ -31,14 +31,19 @@ function Login() {
     }, [])
 
     return (
-        <div className="flex items-center justify-center min-h-screen px-4 py-12 bg-gray-50 sm:px-6 lg:px-8">
-            <div className="w-full max-w-md space-y-8">
-                <div>
+        <div className="flex items-center justify-center min-h-screen px-4 bg-gray-50 sm:px-6 lg:px-8">
+            <div className="flex flex-col items-start justify-center w-full h-screen max-w-md space-y-8">
+                <div className="w-full">
+                    <div className="flex items-center justify-center w-full mt-5 logo-div">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/e/e0/Sindh_Police_Logo.png" alt="Logo" className="w-32" />
+                    </div>
+                    <h1 className="mt-3 text-3xl font-semibold text-center">Police Shaheed Database</h1>
+                    <p className="text-center text-gray-500 ">Account & Welfare Branch, <br /> <span className="text-sm">DIGP South Zone, Karachi</span></p>
                     <h2 className="mt-6 text-3xl font-extrabold text-center text-blue-500 uppercase">
                         Login
                     </h2>
                 </div>
-                <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+                <form className="w-full mt-8 space-y-6" onSubmit={handleSubmit}>
                     <div className="-space-y-px rounded-md shadow-sm">
                         <div>
                             <label htmlFor="username" className="sr-only">Username</label>
