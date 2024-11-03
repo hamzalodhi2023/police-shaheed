@@ -206,7 +206,7 @@ function ShaheedMap({ data = [] }) {
             </td>
             <td className="border-b px-4 py-2 text-center text-[12px]">
               <img
-                src={`../../../backend/public/profiles/${item.photo}`}
+                src={`http://police-shaheed.zubizshop.com/profiles/${item.photo}`}
                 className="w-[96px]"
                 alt={name}
               />
@@ -595,7 +595,7 @@ function ShaheedMap({ data = [] }) {
                           className="hidden py-1 pl-3 text-lg rounded shadow-lg outline-none"
                         />
                         <img
-                          src={`../../../backend/public/profiles/${item.photo}`}
+                          src={`http://police-shaheed.zubizshop.com/profiles/${item.photo}`}
                           className="w-[96px]"
                           alt=""
                         />

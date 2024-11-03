@@ -484,7 +484,7 @@ function CreateShaheed() {
               src={
                 photo
                   ? URL.createObjectURL(photo)
-                  : `../../../backend/public/profiles/default.jpg`
+                  : `http://police-shaheed.zubizshop.com/profiles/default.jpg`
               }
               className="w-[96px]"
               alt=""

@@ -117,7 +117,7 @@ function SingleView() {
             Welfare Branch
           </p>
           <img
-            src={`../../../backend/public/profiles/${photo}`}
+            src={`http://police-shaheed.zubizshop.com/profiles/${photo}`}
             alt={name}
             className="mt-5 w-[96px]"
           />

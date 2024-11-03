@@ -20,10 +20,9 @@ const PORT = process.env.PORT;
 // Middleware setup
 app.use(
   cors({
-    // origin: ["https://police-shaheed.netlify.app"],
-    // // origin: ["http://localhost:5173"],
-    // methods: ["GET", "POST", "PATCH", "DELETE", "OPTIONS", "PUT"],
-    // credentials: true,
+    origin: ["http://77.37.45.84"],
+    methods: ["GET", "POST", "PATCH", "DELETE"],
+    credentials: true,
   })
 );
 app.use(express.static("public"));
