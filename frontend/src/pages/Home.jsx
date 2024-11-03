@@ -37,16 +37,16 @@ function Home() {
     <>
       <div className="min-h-screen w-full">
         <div className="flex w-full items-start justify-end">
-          <button className="m-5 rounded bg-red-500 px-6 py-2 font-bold text-white hover:bg-red-700">
+          <button
+            onClick={() => {
+              localStorage.clear();
+            }}
+            className="m-5 rounded bg-red-500 px-6 py-2 font-bold text-white hover:bg-red-700"
+          >
             Logout
           </button>{" "}
         </div>
-        <div
-          onClick={() => {
-            localStorage.clear();
-          }}
-          className="logo-div mt-5 flex w-full items-center justify-center"
-        >
+        <div className="logo-div mt-5 flex w-full items-center justify-center">
           <img
             src="https://upload.wikimedia.org/wikipedia/en/e/e0/Sindh_Police_Logo.png"
             alt="Logo"
