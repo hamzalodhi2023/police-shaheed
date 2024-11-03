@@ -213,7 +213,7 @@ function ShaheedMap({ data = [] }) {
             </td>
             <td className="border-b px-4 py-2 text-center text-[15px]">
               <NavLink to={`/${id}`}>
-                <button className="px-2 py-1 font-bold text-white bg-blue-500 rounded hover:bg-blue-700">
+                <button className="rounded bg-blue-500 px-2 py-1 font-bold text-white hover:bg-blue-700">
                   <FaEye />
                 </button>
               </NavLink>
@@ -255,7 +255,7 @@ function ShaheedMap({ data = [] }) {
                   });
                   setId(id);
                 }}
-                className="px-2 py-1 m-2 font-bold text-white bg-green-500 rounded hover:bg-green-700"
+                className="m-2 rounded bg-green-500 px-2 py-1 font-bold text-white hover:bg-green-700"
               >
                 <MdEditSquare />
               </button>
@@ -264,10 +264,10 @@ function ShaheedMap({ data = [] }) {
               <div
                 className={`${formDis === false ? "static hidden" : "fixed block"} left-0 top-0 h-screen w-full overflow-y-auto bg-white`}
               >
-                <div className="flex items-center justify-center w-full min-h-screen">
+                <div className="flex min-h-screen w-full items-center justify-center">
                   <button
                     onClick={() => setFormDis(false)}
-                    className="absolute px-4 py-2 font-bold text-white bg-blue-500 rounded left-5 top-5 hover:bg-blue-600"
+                    className="absolute left-5 top-5 rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-600"
                   >
                     Go Back
                   </button>
@@ -278,7 +278,7 @@ function ShaheedMap({ data = [] }) {
                     <p className="mb-5 text-3xl font-semibold text-blue-500">
                       Shaheed Data Form
                     </p>
-                    <div className="flex items-center justify-between w-full my-5">
+                    <div className="my-5 flex w-full items-center justify-between">
                       <div className="flex w-[calc(100%/2.10)] flex-col">
                         <label className="ml-5 text-start">Personal No</label>
                         <input
@@ -287,7 +287,7 @@ function ShaheedMap({ data = [] }) {
                           value={formData.personal_no}
                           onChange={handleChange}
                           placeholder="Personal No."
-                          className="py-1 pl-3 text-lg rounded shadow-lg outline-none"
+                          className="rounded py-1 pl-3 text-lg shadow-lg outline-none"
                           required
                         />
                       </div>
@@ -297,7 +297,7 @@ function ShaheedMap({ data = [] }) {
                           name="rank"
                           value={formData.rank}
                           onChange={handleChange}
-                          className="w-full py-1 pl-3 text-lg rounded shadow-lg outline-none"
+                          className="w-full rounded py-1 pl-3 text-lg shadow-lg outline-none"
                           required
                         >
                           <option disabled value="">
@@ -313,7 +313,7 @@ function ShaheedMap({ data = [] }) {
                         </select>
                       </div>
                     </div>
-                    <div className="flex items-center justify-between w-full my-5">
+                    <div className="my-5 flex w-full items-center justify-between">
                       <div className="flex w-[calc(100%/2.10)] flex-col">
                         <label className="ml-5 text-start">Service No</label>
                         <input
@@ -322,7 +322,7 @@ function ShaheedMap({ data = [] }) {
                           onChange={handleChange}
                           type="text"
                           placeholder="Service No."
-                          className="py-1 pl-3 text-lg rounded shadow-lg outline-none"
+                          className="rounded py-1 pl-3 text-lg shadow-lg outline-none"
                           required
                         />
                       </div>
@@ -334,12 +334,12 @@ function ShaheedMap({ data = [] }) {
                           onChange={handleChange}
                           type="text"
                           placeholder="Name"
-                          className="py-1 pl-3 text-lg rounded shadow-lg outline-none"
+                          className="rounded py-1 pl-3 text-lg shadow-lg outline-none"
                           required
                         />
                       </div>
                     </div>
-                    <div className="flex items-center justify-between w-full my-5">
+                    <div className="my-5 flex w-full items-center justify-between">
                       <div className="flex w-[calc(100%/2.10)] flex-col">
                         <label className="ml-5 text-start">Father's Name</label>
                         <input
@@ -348,7 +348,7 @@ function ShaheedMap({ data = [] }) {
                           onChange={handleChange}
                           type="text"
                           placeholder="Father's Name"
-                          className="py-1 pl-3 text-lg rounded shadow-lg outline-none"
+                          className="rounded py-1 pl-3 text-lg shadow-lg outline-none"
                           required
                         />
                       </div>
@@ -360,19 +360,19 @@ function ShaheedMap({ data = [] }) {
                           onChange={handleChange}
                           type="text"
                           placeholder="CNIC No."
-                          className="py-1 pl-3 text-lg rounded shadow-lg outline-none"
+                          className="rounded py-1 pl-3 text-lg shadow-lg outline-none"
                           required
                         />
                       </div>
                     </div>
-                    <div className="flex items-center justify-between w-full my-5">
+                    <div className="my-5 flex w-full items-center justify-between">
                       <div className="flex w-[calc(100%/2.10)] flex-col">
                         <label className="ml-5 text-start">Unit</label>
                         <select
                           name="unit"
                           value={formData.unit}
                           onChange={handleChange}
-                          className="w-full py-1 pl-3 text-lg rounded shadow-lg outline-none"
+                          className="w-full rounded py-1 pl-3 text-lg shadow-lg outline-none"
                           required
                         >
                           <option disabled value="">
@@ -397,12 +397,12 @@ function ShaheedMap({ data = [] }) {
                           onChange={handleChange}
                           type="text"
                           placeholder="Place of Posting"
-                          className="py-1 pl-3 text-lg rounded shadow-lg outline-none"
+                          className="rounded py-1 pl-3 text-lg shadow-lg outline-none"
                           required
                         />
                       </div>
                     </div>
-                    <div className="flex items-center justify-between w-full my-5">
+                    <div className="my-5 flex w-full items-center justify-between">
                       <div className="flex w-[calc(100%/2.10)] flex-col">
                         <label className="ml-5 text-start">Date of Birth</label>
                         <input
@@ -411,7 +411,7 @@ function ShaheedMap({ data = [] }) {
                           onChange={handleChange}
                           type="date"
                           placeholder="Date of Birth"
-                          className="py-1 pl-3 text-lg rounded shadow-lg outline-none"
+                          className="rounded py-1 pl-3 text-lg shadow-lg outline-none"
                           required
                         />
                       </div>
@@ -425,12 +425,12 @@ function ShaheedMap({ data = [] }) {
                           onChange={handleChange}
                           type="date"
                           placeholder="Date of Appointment"
-                          className="py-1 pl-3 text-lg rounded shadow-lg outline-none"
+                          className="rounded py-1 pl-3 text-lg shadow-lg outline-none"
                           required
                         />
                       </div>
                     </div>
-                    <div className="flex items-center justify-between w-full my-5">
+                    <div className="my-5 flex w-full items-center justify-between">
                       <div className="flex w-[calc(100%/2.10)] flex-col">
                         <label className="ml-5 text-start">
                           Date of Shahadat
@@ -441,7 +441,7 @@ function ShaheedMap({ data = [] }) {
                           onChange={handleChange}
                           type="date"
                           placeholder="Date of Shahadat"
-                          className="py-1 pl-3 text-lg rounded shadow-lg outline-none"
+                          className="rounded py-1 pl-3 text-lg shadow-lg outline-none"
                           required
                         />
                       </div>
@@ -453,12 +453,12 @@ function ShaheedMap({ data = [] }) {
                           onChange={handleChange}
                           type="text"
                           placeholder="Family Member"
-                          className="py-1 pl-3 text-lg rounded shadow-lg outline-none"
+                          className="rounded py-1 pl-3 text-lg shadow-lg outline-none"
                           required
                         />
                       </div>
                     </div>
-                    <div className="flex items-center justify-between w-full my-5">
+                    <div className="my-5 flex w-full items-center justify-between">
                       <div className="flex w-[calc(100%/2.10)] flex-col">
                         <label className="ml-5 text-start">Contact</label>
                         <input
@@ -467,7 +467,7 @@ function ShaheedMap({ data = [] }) {
                           onChange={handleChange}
                           type="text"
                           placeholder="Contact"
-                          className="py-1 pl-3 text-lg rounded shadow-lg outline-none"
+                          className="rounded py-1 pl-3 text-lg shadow-lg outline-none"
                           required
                         />
                       </div>
@@ -479,12 +479,12 @@ function ShaheedMap({ data = [] }) {
                           onChange={handleChange}
                           type="text"
                           placeholder="Address"
-                          className="py-1 pl-3 text-lg rounded shadow-lg outline-none"
+                          className="rounded py-1 pl-3 text-lg shadow-lg outline-none"
                           required
                         />
                       </div>
                     </div>
-                    <div className="flex items-center justify-between w-full my-5">
+                    <div className="my-5 flex w-full items-center justify-between">
                       <div className="flex w-[calc(100%/2.10)] flex-col">
                         <label className="ml-5 text-start">FIR No</label>
                         <input
@@ -493,7 +493,7 @@ function ShaheedMap({ data = [] }) {
                           onChange={handleChange}
                           type="text"
                           placeholder="FIR No"
-                          className="py-1 pl-3 text-lg rounded shadow-lg outline-none"
+                          className="rounded py-1 pl-3 text-lg shadow-lg outline-none"
                           required
                         />
                       </div>
@@ -505,13 +505,13 @@ function ShaheedMap({ data = [] }) {
                           onChange={handleChange}
                           type="text"
                           placeholder="Under Section"
-                          className="py-1 pl-3 text-lg rounded shadow-lg outline-none"
+                          className="rounded py-1 pl-3 text-lg shadow-lg outline-none"
                           required
                         />
                       </div>
                     </div>
-                    <div className="flex items-center justify-between w-full my-5">
-                      <div className="flex flex-col w-full">
+                    <div className="my-5 flex w-full items-center justify-between">
+                      <div className="flex w-full flex-col">
                         <label className="ml-5 text-start">
                           Police Station
                         </label>
@@ -519,7 +519,7 @@ function ShaheedMap({ data = [] }) {
                           onChange={handleChange}
                           name="police_station"
                           value={formData.police_station}
-                          className="w-full py-1 pl-3 text-lg rounded shadow-lg outline-none"
+                          className="w-full rounded py-1 pl-3 text-lg shadow-lg outline-none"
                           required
                         >
                           <option disabled value="">
@@ -535,8 +535,8 @@ function ShaheedMap({ data = [] }) {
                         </select>
                       </div>
                     </div>
-                    <div className="flex items-center justify-between w-full my-5">
-                      <div className="flex flex-col w-full">
+                    <div className="my-5 flex w-full items-center justify-between">
+                      <div className="flex w-full flex-col">
                         <label className="ml-5 text-start">Brief Fact</label>
                         <textarea
                           onChange={handleChange}
@@ -544,12 +544,12 @@ function ShaheedMap({ data = [] }) {
                           value={formData.brief_fact}
                           type="text"
                           placeholder="Brief Fact"
-                          className="py-1 pl-3 text-lg rounded shadow-lg outline-none"
+                          className="rounded py-1 pl-3 text-lg shadow-lg outline-none"
                           required
                         />
                       </div>
                     </div>
-                    <div className="flex items-center justify-between w-full my-5">
+                    <div className="my-5 flex w-full items-center justify-between">
                       <div className="flex w-[calc(100%/2.10)] flex-col">
                         <label className="ml-5 text-start">
                           Compensation Amount
@@ -560,7 +560,7 @@ function ShaheedMap({ data = [] }) {
                           onChange={handleChange}
                           type="text"
                           placeholder="Compensation Amount"
-                          className="py-1 pl-3 text-lg rounded shadow-lg outline-none"
+                          className="rounded py-1 pl-3 text-lg shadow-lg outline-none"
                           required
                         />
                       </div>
@@ -572,16 +572,16 @@ function ShaheedMap({ data = [] }) {
                           onChange={handleChange}
                           type="date"
                           placeholder="Paid Date"
-                          className="py-1 pl-3 text-lg rounded shadow-lg outline-none"
+                          className="rounded py-1 pl-3 text-lg shadow-lg outline-none"
                           required
                         />
                       </div>
                     </div>
-                    <div className="flex items-center justify-between w-full my-5">
+                    <div className="my-5 flex w-full items-center justify-between">
                       <div className="flex items-center gap-5">
                         <label
                           htmlFor="photo"
-                          className="px-4 py-2 font-bold text-white bg-blue-500 rounded cursor-pointer h-fit hover:bg-blue-700"
+                          className="h-fit cursor-pointer rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
                         >
                           Photo
                         </label>
@@ -592,20 +592,20 @@ function ShaheedMap({ data = [] }) {
                           type="file"
                           id="photo"
                           placeholder="Compensation Amount"
-                          className="hidden py-1 pl-3 text-lg rounded shadow-lg outline-none"
+                          className="hidden rounded py-1 pl-3 text-lg shadow-lg outline-none"
                         />
                         <img
                           src={
                             disPhoto
                               ? URL.createObjectURL(disPhoto)
-                              : `http://police-shaheed.zubizshop.com/profiles/${photo}`
+                              : `http://police-shaheed.zubizshop.com/profiles/${item.photo}`
                           }
                           className="w-[96px]"
                           alt=""
                         />
                       </div>
                     </div>
-                    <div className="flex items-center justify-center w-full gap-5 my-5">
+                    <div className="my-5 flex w-full items-center justify-center gap-5">
                       <button
                         onClick={() => {
                           setFormDis(false);
@@ -634,13 +634,13 @@ function ShaheedMap({ data = [] }) {
                           });
                         }}
                         type="button"
-                        className="w-full px-4 py-3 mt-3 text-xl font-bold text-white bg-red-500 rounded hover:bg-red-700 sm:ml-3 sm:mt-0"
+                        className="mt-3 w-full rounded bg-red-500 px-4 py-3 text-xl font-bold text-white hover:bg-red-700 sm:ml-3 sm:mt-0"
                       >
                         Cancel
                       </button>
                       <button
                         type="submit"
-                        className="w-full px-4 py-3 text-xl font-bold text-white bg-blue-500 rounded hover:bg-blue-700"
+                        className="w-full rounded bg-blue-500 px-4 py-3 text-xl font-bold text-white hover:bg-blue-700"
                       >
                         Submit
                       </button>
