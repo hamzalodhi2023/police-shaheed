@@ -1,7 +1,7 @@
 const multer = require("multer");
 const path = require("path");
 
-const profileFolderPath = path.join(__dirname, "/public/profiles/");
+const profileFolderPath = path.join(__dirname, "../public/profiles/");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
