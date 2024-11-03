@@ -390,9 +390,17 @@ const deleteShaheed = (req, res) => {
           return res.status(500).json({ message: "Internal Server Error" });
         }
 
-        fse.moveSync(
+        fse.move(
           `../public/profiles/${deletedItem.photo}`,
-          "../public/deleted-profiles/"
+          `../public/deleted-profiles/${deletedItem.photo}`,
+          (err) => {
+            if (err) {
+              // Log the error for debugging purposes
+              debug(err);
+              // Return a 500 Internal Server Error response
+              return res.status(500).json({ message: "Internal Server Error" });
+            }
+          }
         );
         // Return a 202 accepted response
         return res.status(202).json({ message: "Shaheed deleted!" });
