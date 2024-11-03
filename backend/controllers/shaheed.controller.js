@@ -390,7 +390,7 @@ const deleteShaheed = (req, res) => {
         }
 
         fs.unlink(
-          path.join(__dirname, `/profiles/${deletedItem.photo}`),
+          path.join(__dirname, `../public/profiles/${deletedItem.photo}`),
           (err) => {
             if (err) {
               debug(err);
