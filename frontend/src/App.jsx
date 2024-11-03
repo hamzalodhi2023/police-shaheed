@@ -49,10 +49,6 @@ function App() {
             path: "/create",
             element: <CreateShaheed />,
           },
-          {
-            path: "*",
-            element: <Error />,
-          },
         ],
       },
     ]);
