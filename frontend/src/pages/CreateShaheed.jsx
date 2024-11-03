@@ -159,21 +159,22 @@ function CreateShaheed() {
   };
 
   return (
-    <div className="flex min-h-screen w-full items-center justify-center">
+    <div className="flex items-center justify-center w-full min-h-screen">
       <button
         onClick={() => navigate("/")}
-        className="absolute left-5 top-5 rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-600"
+        className="absolute px-4 py-2 font-bold text-white bg-blue-500 rounded left-5 top-5 hover:bg-blue-600"
       >
         Go Back
       </button>
       <form
+        autoComplete="off"
         onSubmit={handleSubmit}
         className="flex min-h-screen w-[80%] flex-col items-center justify-start px-5 py-5 pt-10"
       >
         <p className="mb-5 text-3xl font-semibold text-blue-500">
           Shaheed Data Form
         </p>
-        <div className="my-5 flex w-full items-center justify-between">
+        <div className="flex items-center justify-between w-full my-5">
           <div className="flex w-[calc(100%/2.10)] flex-col">
             <label>Personal No</label>
             <input
@@ -182,7 +183,7 @@ function CreateShaheed() {
               value={formData.personal_no}
               onChange={handleChange}
               placeholder="10240000"
-              className="rounded py-1 pl-3 text-lg shadow-lg outline-none"
+              className="py-1 pl-3 text-lg rounded shadow-lg outline-none"
               required
             />
           </div>
@@ -192,7 +193,7 @@ function CreateShaheed() {
               name="rank"
               value={formData.rank}
               onChange={handleChange}
-              className="w-full rounded py-1 pl-3 text-lg shadow-lg outline-none"
+              className="w-full py-1 pl-3 text-lg rounded shadow-lg outline-none"
               required
             >
               <option disabled value="">
@@ -208,7 +209,7 @@ function CreateShaheed() {
             </select>
           </div>
         </div>
-        <div className="my-5 flex w-full items-center justify-between">
+        <div className="flex items-center justify-between w-full my-5">
           <div className="flex w-[calc(100%/2.10)] flex-col">
             <label>Service No</label>
             <input
@@ -217,7 +218,7 @@ function CreateShaheed() {
               onChange={handleChange}
               type="text"
               placeholder="Service No."
-              className="rounded py-1 pl-3 text-lg shadow-lg outline-none"
+              className="py-1 pl-3 text-lg rounded shadow-lg outline-none"
               required
             />
           </div>
@@ -229,12 +230,12 @@ function CreateShaheed() {
               onChange={handleChange}
               type="text"
               placeholder="Name"
-              className="rounded py-1 pl-3 text-lg shadow-lg outline-none"
+              className="py-1 pl-3 text-lg rounded shadow-lg outline-none"
               required
             />
           </div>
         </div>
-        <div className="my-5 flex w-full items-center justify-between">
+        <div className="flex items-center justify-between w-full my-5">
           <div className="flex w-[calc(100%/2.10)] flex-col">
             <label>Father's Name</label>
             <input
@@ -243,7 +244,7 @@ function CreateShaheed() {
               onChange={handleChange}
               type="text"
               placeholder="Father's Name"
-              className="rounded py-1 pl-3 text-lg shadow-lg outline-none"
+              className="py-1 pl-3 text-lg rounded shadow-lg outline-none"
               required
             />
           </div>
@@ -255,19 +256,19 @@ function CreateShaheed() {
               onChange={handleChange}
               type="text"
               placeholder="42301-1234567-1"
-              className="rounded py-1 pl-3 text-lg shadow-lg outline-none"
+              className="py-1 pl-3 text-lg rounded shadow-lg outline-none"
               required
             />
           </div>
         </div>
-        <div className="my-5 flex w-full items-center justify-between">
+        <div className="flex items-center justify-between w-full my-5">
           <div className="flex w-[calc(100%/2.10)] flex-col">
             <label>Unit</label>
             <select
               name="unit"
               value={formData.unit}
               onChange={handleChange}
-              className="w-full rounded py-1 pl-3 text-lg shadow-lg outline-none"
+              className="w-full py-1 pl-3 text-lg rounded shadow-lg outline-none"
               required
             >
               <option disabled value="">
@@ -290,12 +291,12 @@ function CreateShaheed() {
               onChange={handleChange}
               type="text"
               placeholder="Place of Posting"
-              className="rounded py-1 pl-3 text-lg shadow-lg outline-none"
+              className="py-1 pl-3 text-lg rounded shadow-lg outline-none"
               required
             />
           </div>
         </div>
-        <div className="my-5 flex w-full items-center justify-between">
+        <div className="flex items-center justify-between w-full my-5">
           <div className="flex w-[calc(100%/2.10)] flex-col">
             <label>Date of Birth</label>
             <input
@@ -304,7 +305,7 @@ function CreateShaheed() {
               onChange={handleChange}
               type="date"
               placeholder="Date of Birth"
-              className="rounded py-1 pl-3 text-lg shadow-lg outline-none"
+              className="py-1 pl-3 text-lg rounded shadow-lg outline-none"
               required
             />
           </div>
@@ -316,12 +317,12 @@ function CreateShaheed() {
               onChange={handleChange}
               type="date"
               placeholder="Date of Appointment"
-              className="rounded py-1 pl-3 text-lg shadow-lg outline-none"
+              className="py-1 pl-3 text-lg rounded shadow-lg outline-none"
               required
             />
           </div>
         </div>
-        <div className="my-5 flex w-full items-center justify-between">
+        <div className="flex items-center justify-between w-full my-5">
           <div className="flex w-[calc(100%/2.10)] flex-col">
             <label>Date of Shahadat</label>
             <input
@@ -330,7 +331,7 @@ function CreateShaheed() {
               onChange={handleChange}
               type="date"
               placeholder="Date of Shahadat"
-              className="rounded py-1 pl-3 text-lg shadow-lg outline-none"
+              className="py-1 pl-3 text-lg rounded shadow-lg outline-none"
               required
             />
           </div>
@@ -342,12 +343,12 @@ function CreateShaheed() {
               onChange={handleChange}
               type="text"
               placeholder="Family Member Name & Relation"
-              className="rounded py-1 pl-3 text-lg shadow-lg outline-none"
+              className="py-1 pl-3 text-lg rounded shadow-lg outline-none"
               required
             />
           </div>
         </div>
-        <div className="my-5 flex w-full items-center justify-between">
+        <div className="flex items-center justify-between w-full my-5">
           <div className="flex w-[calc(100%/2.10)] flex-col">
             <label>Contact</label>
             <input
@@ -356,7 +357,7 @@ function CreateShaheed() {
               onChange={handleChange}
               type="text"
               placeholder="0345-1234567"
-              className="rounded py-1 pl-3 text-lg shadow-lg outline-none"
+              className="py-1 pl-3 text-lg rounded shadow-lg outline-none"
               required
             />
           </div>
@@ -368,12 +369,12 @@ function CreateShaheed() {
               onChange={handleChange}
               type="text"
               placeholder="Address"
-              className="rounded py-1 pl-3 text-lg shadow-lg outline-none"
+              className="py-1 pl-3 text-lg rounded shadow-lg outline-none"
               required
             />
           </div>
         </div>
-        <div className="my-5 flex w-full items-center justify-between">
+        <div className="flex items-center justify-between w-full my-5">
           <div className="flex w-[calc(100%/2.10)] flex-col">
             <label>FIR No</label>
             <input
@@ -382,7 +383,7 @@ function CreateShaheed() {
               onChange={handleChange}
               type="text"
               placeholder="01/2024"
-              className="rounded py-1 pl-3 text-lg shadow-lg outline-none"
+              className="py-1 pl-3 text-lg rounded shadow-lg outline-none"
               required
             />
           </div>
@@ -394,19 +395,19 @@ function CreateShaheed() {
               onChange={handleChange}
               type="text"
               placeholder="Under Section"
-              className="rounded py-1 pl-3 text-lg shadow-lg outline-none"
+              className="py-1 pl-3 text-lg rounded shadow-lg outline-none"
               required
             />
           </div>
         </div>
-        <div className="my-5 flex w-full items-center justify-between">
-          <div className="flex w-full flex-col">
+        <div className="flex items-center justify-between w-full my-5">
+          <div className="flex flex-col w-full">
             <label>Police Station</label>
             <select
               onChange={handleChange}
               name="police_station"
               value={formData.police_station}
-              className="w-full rounded py-1 pl-3 text-lg shadow-lg outline-none"
+              className="w-full py-1 pl-3 text-lg rounded shadow-lg outline-none"
               required
             >
               <option disabled value="">
@@ -422,8 +423,8 @@ function CreateShaheed() {
             </select>
           </div>
         </div>
-        <div className="my-5 flex w-full items-center justify-between">
-          <div className="flex w-full flex-col">
+        <div className="flex items-center justify-between w-full my-5">
+          <div className="flex flex-col w-full">
             <label>Brief Fact</label>
             <textarea
               onChange={handleChange}
@@ -431,12 +432,12 @@ function CreateShaheed() {
               value={formData.brief_fact}
               type="text"
               placeholder="Brief Fact"
-              className="rounded py-1 pl-3 text-lg shadow-lg outline-none"
+              className="py-1 pl-3 text-lg rounded shadow-lg outline-none"
               required
             />
           </div>
         </div>
-        <div className="my-5 flex w-full items-center justify-between">
+        <div className="flex items-center justify-between w-full my-5">
           <div className="flex w-[calc(100%/2.10)] flex-col">
             <label>Compensation Amount</label>
             <input
@@ -445,7 +446,7 @@ function CreateShaheed() {
               onChange={handleChange}
               type="text"
               placeholder="100000"
-              className="rounded py-1 pl-3 text-lg shadow-lg outline-none"
+              className="py-1 pl-3 text-lg rounded shadow-lg outline-none"
               required
             />
           </div>
@@ -457,17 +458,17 @@ function CreateShaheed() {
               onChange={handleChange}
               type="date"
               placeholder="Paid Date"
-              className="rounded py-1 pl-3 text-lg shadow-lg outline-none"
+              className="py-1 pl-3 text-lg rounded shadow-lg outline-none"
               required
             />
           </div>
         </div>
-        <div className="my-5 flex w-full items-center justify-between">
+        <div className="flex items-center justify-between w-full my-5">
           <div className="flex flex-col items-center">
             <div className="flex items-center">
               <label
                 htmlFor="photo"
-                className="inline-block cursor-pointer rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
+                className="inline-block px-4 py-2 font-bold text-white bg-blue-500 rounded cursor-pointer hover:bg-blue-700"
               >
                 Photo
               </label>
@@ -478,7 +479,7 @@ function CreateShaheed() {
                 type="file"
                 id="photo"
                 placeholder="Compensation Amount"
-                className="hidden rounded py-1 pl-3 text-lg shadow-lg outline-none"
+                className="hidden py-1 pl-3 text-lg rounded shadow-lg outline-none"
                 required
               />
               <img
@@ -494,10 +495,10 @@ function CreateShaheed() {
             <p>Size must be 1 X 1 inch</p>
           </div>
         </div>
-        <div className="my-5 flex w-full items-center justify-center">
+        <div className="flex items-center justify-center w-full my-5">
           <button
             type="submit"
-            className="w-full rounded bg-blue-500 px-4 py-3 text-xl font-bold text-white hover:bg-blue-700"
+            className="w-full px-4 py-3 text-xl font-bold text-white bg-blue-500 rounded hover:bg-blue-700"
           >
             Submit
           </button>
