@@ -11,7 +11,7 @@ function Home() {
     })
 
     if (isPending) {
-        return <div className="w-full h-screen absolute flex items-center justify-center bg-transparent flex-col gap-10">
+        return <div className="absolute flex flex-col items-center justify-center w-full h-screen gap-10 bg-transparent">
             <RiseLoader
                 color="#2a489e"
                 loading={isPending}
@@ -24,7 +24,7 @@ function Home() {
     }
 
     if (isError) {
-        return <div className="w-full h-screen absolute flex items-center justify-center bg-transparent flex-col gap-10">
+        return <div className="absolute flex flex-col items-center justify-center w-full h-screen gap-10 bg-transparent">
             <p className="text-xl">Error: {error.message}</p>
         </div>
     }
@@ -32,18 +32,18 @@ function Home() {
     return (
         <>
             <div className="w-full min-h-screen ">
-                <div className="logo-div w-full flex items-center justify-center mt-5">
+                <div className="flex items-center justify-center w-full mt-5 logo-div">
                     <img src="https://upload.wikimedia.org/wikipedia/en/e/e0/Sindh_Police_Logo.png" alt="Logo" className="w-32" />
                 </div>
-                <h1 className="text-center font-semibold text-3xl mt-3">Police Shaheed Profile</h1>
-                <p className="text-center text-gray-500 ">Welfare Branch, DIGP South Zone, Karachi</p>
-                <div className="w-full flex items-center justify-end px-5">
-                    <NavLink to="/create" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded">Add</NavLink>
+                <h1 className="mt-3 text-3xl font-semibold text-center">Police Shaheed Data</h1>
+                <p className="text-center text-gray-500 ">Account & Welfare Branch, DIGP South Zone, Karachi</p>
+                <div className="flex items-center justify-end w-full px-5">
+                    <NavLink to="/create" className="px-6 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700">Add</NavLink>
                 </div>
-                <div className="overflow-x-auto w-full mt-5">
+                <div className="w-full mt-5 overflow-x-auto">
                     <table className="min-w-full bg-white border border-gray-300">
                         <thead>
-                            <tr className="bg-blue-500 text-white ">
+                            <tr className="text-white bg-blue-500 ">
                                 <th className="py-2 px-4 border-b text-[12px]  text-center font-semibold  uppercase tracking-wider">
                                     Id
                                 </th>
