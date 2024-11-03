@@ -126,7 +126,7 @@ const createShaheed = (req, res) => {
         // Log the error for debugging purposes
         debug(err);
         // Return a 500 Internal Server Error response
-        return res.status(500).json({ message: "Internal Server Error" });
+        return res.status(500).json({ message: err });
       }
       // Parse the JSON data
       const shaheedData = JSON.parse(data);
