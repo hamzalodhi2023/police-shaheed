@@ -63,7 +63,7 @@ function Home() {
           Account & Welfare Branch, DIGP South Zone, Karachi
         </p>
         <div className="flex w-full items-center justify-between px-5">
-          <p>Total Record: {length}</p>
+          <p className="text-xl font-semibold">Total Records: {length}</p>
           <NavLink
             to="/create"
             className="rounded bg-blue-500 px-6 py-2 font-bold text-white hover:bg-blue-700"

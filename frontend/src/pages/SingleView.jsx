@@ -119,7 +119,7 @@ function SingleView() {
           <img
             src={`http://police-shaheed.zubizshop.com/profiles/${photo}`}
             alt={name}
-            className="mt-5 w-[96px]"
+            className="mt-5 w-[192px]"
           />
         </div>
         {/* image div */}
@@ -189,7 +189,7 @@ function SingleView() {
             Family Detail:
           </h1>
           <div className="flex items-center justify-between w-full my-5">
-            <div className="w-1/3">
+            <div className="w-1/3 pr-5">
               <label className="font-semibold">
                 Name Family Member with Relation:
               </label>
