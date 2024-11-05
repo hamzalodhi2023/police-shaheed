@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { EShaheedData } from "../api/ShaheedApi";
 
 function ShaheedMap({ data = [] }) {
+
   const [id, setId] = useState("");
 
   //` notify function for notification 1
@@ -47,6 +48,7 @@ function ShaheedMap({ data = [] }) {
         paid_date: "",
       });
       setDisPhoto("");
+      setPrevDisPhoto("")
     },
   });
   //` all inputs data state for controled components
@@ -74,6 +76,7 @@ function ShaheedMap({ data = [] }) {
   });
   //` photo state
   const [disPhoto, setDisPhoto] = useState("");
+  const [prevDisPhoto, setPrevDisPhoto] = useState("")
   //` inputs option data
   const policeStation = [
     { label: "Clifton" },
@@ -167,7 +170,7 @@ function ShaheedMap({ data = [] }) {
   };
   return (
     <>
-      {data?.map((item) => {
+      {data?.map((item, index) => {
         const {
           id,
           personal_no,
@@ -194,7 +197,7 @@ function ShaheedMap({ data = [] }) {
         } = item;
         return (
           <tr key={item.id} className="even:bg-gray-50 hover:bg-gray-100">
-            <td className="border-b px-4 py-2 text-center text-[12px]">{id}</td>
+            <td className="border-b px-4 py-2 text-center text-[12px]">{index + 1}</td>
             <td className="border-b px-4 py-2 text-center text-[12px]">
               {personal_no}
             </td>
@@ -230,7 +233,7 @@ function ShaheedMap({ data = [] }) {
             </td>
             <td className="border-b px-4 py-2 text-center text-[12px]">
               <img
-                src={`http://police-shaheed.zubizshop.com/profiles/${item.photo}`}
+                src={`http://police-shaheed.zubizshop.com/profiles/${photo}`}
                 className="w-[96px]"
                 alt={name}
               />
@@ -243,6 +246,7 @@ function ShaheedMap({ data = [] }) {
               </NavLink>
               <button
                 onClick={() => {
+                  document.body.style.overflow = "hidden";
                   setFormDis(true);
                   const [doaD, doaM, doaY] = doa.split("-");
                   const conDoa = `${doaY}-${doaM}-${doaD}`;
@@ -277,6 +281,7 @@ function ShaheedMap({ data = [] }) {
                     compensation_amount: compensation_amount,
                     paid_date: conPd,
                   });
+                  setPrevDisPhoto(photo);
                   setId(id);
                 }}
                 className="px-2 py-1 m-2 font-bold text-white bg-green-500 rounded hover:bg-green-700"
@@ -623,7 +628,7 @@ function ShaheedMap({ data = [] }) {
                           src={
                             disPhoto
                               ? URL.createObjectURL(disPhoto)
-                              : `http://police-shaheed.zubizshop.com/profiles/${item.photo}`
+                              : `http://police-shaheed.zubizshop.com/profiles/${prevDisPhoto}`
                           }
                           className="w-[96px]"
                           alt=""
