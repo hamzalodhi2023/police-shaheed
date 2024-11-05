@@ -406,29 +406,5 @@
     "compensation_amount": "20000000",
     "paid_date": "07-08-2020",
     "photo": "1731045732203.jpeg"
-  },
-  {
-    "id": 675141923445130,
-    "personal_no": "32465465",
-    "rank": "DIGP",
-    "service_no": "asdfasdf",
-    "name": "Hamza Khan Lodhi",
-    "father_name": "asdfasdf",
-    "cnic_no": "asdfasdf",
-    "unit": "INV-II",
-    "place_of_posting": "asdfasdf",
-    "dob": "15-11-2024",
-    "doa": "19-11-2024",
-    "dos": "15-11-2024",
-    "family_member": "asdfasdf",
-    "contact": "asdfasd",
-    "address": "fasdf",
-    "fir_no": "asdfas",
-    "under_section": "dfasdfsadf",
-    "police_station": "Clifton",
-    "brief_fact": "asdfasdf",
-    "compensation_amount": "asdfasdf",
-    "paid_date": "29-11-2024",
-    "photo": "1731712885781.jpeg"
   }
 ]
