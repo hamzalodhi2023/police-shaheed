@@ -63,7 +63,7 @@ function CreateShaheed() {
         compensation_amount: "",
         paid_date: "",
       });
-      setPhoto(null);
+      setPhoto("");
       notify();
       navigate(`/${data.id}`);
     },

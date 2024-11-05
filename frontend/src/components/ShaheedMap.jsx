@@ -24,6 +24,29 @@ function ShaheedMap({ data = [] }) {
       queryClient.invalidateQueries(["shaheed"]);
       setFormDis(false);
       notify();
+      setFormData({
+        personal_no: "",
+        rank: "",
+        service_no: "",
+        name: "",
+        father_name: "",
+        cnic_no: "",
+        unit: "",
+        place_of_posting: "",
+        dob: "",
+        doa: "",
+        dos: "",
+        family_member: "",
+        contact: "",
+        address: "",
+        fir_no: "",
+        under_section: "",
+        police_station: "",
+        brief_fact: "",
+        compensation_amount: "",
+        paid_date: "",
+      })
+      setDisPhoto("");
     },
   });
   //` all inputs data state for controled components
