@@ -170,7 +170,7 @@ function ShaheedMap({ data = [] }) {
   };
   return (
     <>
-      {data?.map((item) => {
+      {data?.map((item, index) => {
         const {
           id,
           personal_no,
@@ -197,7 +197,7 @@ function ShaheedMap({ data = [] }) {
         } = item;
         return (
           <tr key={item.id} className="even:bg-gray-50 hover:bg-gray-100">
-            <td className="border-b px-4 py-2 text-center text-[12px]">{id}</td>
+            <td className="border-b px-4 py-2 text-center text-[12px]">{index + 1}</td>
             <td className="border-b px-4 py-2 text-center text-[12px]">
               {personal_no}
             </td>

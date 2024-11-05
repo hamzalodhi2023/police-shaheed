@@ -11,7 +11,7 @@ function Home() {
     queryFn: GetShaheedData,
   });
   const navigate = useNavigate();
-
+  const length = data?.length;
   if (isPending) {
     return (
       <div className="absolute flex h-screen w-full flex-col items-center justify-center gap-10 bg-transparent">
@@ -44,12 +44,12 @@ function Home() {
               localStorage.clear();
               navigate("/");
             }}
-            className="m-5 rounded bg-red-500 px-6 py-2 font-bold text-white hover:bg-red-700"
+            className="mr-5 mt-5 rounded bg-red-500 px-6 py-2 font-bold text-white hover:bg-red-700"
           >
             Logout
-          </button>{" "}
+          </button>
         </div>
-        <div className="logo-div mt-5 flex w-full items-center justify-center">
+        <div className="logo-div flex w-full items-center justify-center">
           <img
             src="https://upload.wikimedia.org/wikipedia/en/e/e0/Sindh_Police_Logo.png"
             alt="Logo"
@@ -62,7 +62,8 @@ function Home() {
         <p className="text-center text-gray-500">
           Account & Welfare Branch, DIGP South Zone, Karachi
         </p>
-        <div className="flex w-full items-center justify-end px-5">
+        <div className="flex w-full items-center justify-between px-5">
+          <p>Total Record: {length}</p>
           <NavLink
             to="/create"
             className="rounded bg-blue-500 px-6 py-2 font-bold text-white hover:bg-blue-700"
