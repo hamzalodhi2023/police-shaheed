@@ -246,6 +246,7 @@ function ShaheedMap({ data = [] }) {
               </NavLink>
               <button
                 onClick={() => {
+                  document.body.style.overflow = "hidden";
                   setFormDis(true);
                   const [doaD, doaM, doaY] = doa.split("-");
                   const conDoa = `${doaY}-${doaM}-${doaD}`;
