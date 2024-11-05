@@ -109,6 +109,7 @@ function CreateShaheed() {
     { label: "Madina Colony" },
     { label: "Saeedabad" },
     { label: "Ittehad Town" },
+    { label: "Gulberg" },
   ];
   const ranks = [
     { label: "DIGP" },

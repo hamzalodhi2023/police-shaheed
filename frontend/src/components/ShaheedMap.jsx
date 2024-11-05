@@ -91,6 +91,7 @@ function ShaheedMap({ data = [] }) {
     { label: "Madina Colony" },
     { label: "Saeedabad" },
     { label: "Ittehad Town" },
+    { label: "Gulberg" },
   ];
 
   const ranks = [
