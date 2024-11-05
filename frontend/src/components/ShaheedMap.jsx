@@ -45,7 +45,7 @@ function ShaheedMap({ data = [] }) {
         brief_fact: "",
         compensation_amount: "",
         paid_date: "",
-      })
+      });
       setDisPhoto("");
     },
   });
