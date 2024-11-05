@@ -132,7 +132,7 @@ const createShaheed = (req, res) => {
       // Parse the JSON data
       const shaheedData = JSON.parse(data);
       // Generate a new ID for the new shaheed
-      const newId = shaheedData.length + 1;
+      const newId = Math.floor(Math.random() * 1000000000000000) + 1000000;
       // Create a new shaheed object
       const newShaheed = {
         id: newId,
