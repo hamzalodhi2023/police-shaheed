@@ -649,6 +649,7 @@ function ShaheedMap({ data = [] }) {
                     <div className="flex items-center justify-center w-full gap-5 my-5">
                       <button
                         onClick={() => {
+                          document.body.style.overflow = "auto";
                           setFormDis(false);
                           setFormData({
                             id,
@@ -681,6 +682,9 @@ function ShaheedMap({ data = [] }) {
                       </button>
                       <button
                         type="submit"
+                        onClick={() => {
+                          document.body.style.overflow = "auto";
+                        }}
                         className="w-full px-4 py-3 text-xl font-bold text-white bg-blue-500 rounded hover:bg-blue-700"
                       >
                         Submit
