@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { MdEditSquare } from "react-icons/md";
 import { NavLink } from "react-router-dom";
