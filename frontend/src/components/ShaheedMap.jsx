@@ -118,6 +118,16 @@ function ShaheedMap({ data = [] }) {
     { label: "Saeedabad" },
     { label: "Ittehad Town" },
     { label: "Gulberg" },
+    { label: "Gulistan-e-Johar" },
+    { label: "Gulshan-e-lqbal" },
+    { label: "Bahdurabad" },
+    { label: "Saudabad" },
+    { label: "Sohrab Goth" },
+    { label: "Soldier Bazar" },
+    { label: "Shah Latif Malir" },
+    { label: "PIB" },
+    { label: "KIA" },
+    { label: "Pakistan Bazar" },
   ];
 
   const ranks = [
