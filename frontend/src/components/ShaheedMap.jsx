@@ -687,7 +687,7 @@ function ShaheedMap({ data = [] }) {
                         }}
                         className="w-full px-4 py-3 text-xl font-bold text-white bg-blue-500 rounded hover:bg-blue-700"
                       >
-                        Submit
+                        Save
                       </button>
                     </div>
                   </form>
