@@ -120,6 +120,7 @@ function CreateShaheed() {
     { label: "PIB" },
     { label: "KIA" },
     { label: "Pakistan Bazar" },
+    { label: "Tipu Sultan" },
   ];
   const ranks = [
     { label: "DIGP" },

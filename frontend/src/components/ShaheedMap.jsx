@@ -128,6 +128,7 @@ function ShaheedMap({ data = [] }) {
     { label: "PIB" },
     { label: "KIA" },
     { label: "Pakistan Bazar" },
+    { label: "Tipu Sultan" },
   ];
 
   const ranks = [
