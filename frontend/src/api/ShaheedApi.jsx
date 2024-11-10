@@ -2,8 +2,8 @@ import axios from "axios";
 
 axios.defaults.withCredentials = true;
 const api = axios.create({
-  baseURL: "http://police-shaheed.zubizshop.com/api",
-  // baseURL: "http://localhost:8080/api",
+  // baseURL: "http://police-shaheed.zubizshop.com/api",
+  baseURL: "http://localhost:8080/api",
 });
 
 export const GetShaheedData = async () => {
