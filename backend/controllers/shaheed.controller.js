@@ -45,7 +45,7 @@ const getShaheed = (req, res) => {
 const getSingleShaheed = (req, res) => {
   try {
     // Extract the shaheed ID from the request parameters
-    const { id } = req.params;
+    const { id } = req.query;
 
     // Read the contents of the shaheed JSON file
     fs.readFile(shaheedFilePath, "utf-8", (err, data) => {
@@ -417,6 +417,60 @@ const deleteShaheed = (req, res) => {
   }
 };
 
+/**
+ * Filter a shaheed record
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ */
+const filterShaheed = (req, res) => {
+  try {
+    const { rank, unit, ps, from, to } = req.query;
+
+    fs.readFile(shaheedFilePath, "utf-8", (err, data) => {
+      if (err) {
+        debug(err);
+        return res.status(500).json({ message: "Internal Server Error" });
+      }
+
+      const shaheedData = JSON.parse(data);
+      let filteredData = shaheedData;
+
+      if (!rank && !unit && !ps && !from && !to) {
+        return res.status(200).json(filteredData);
+      }
+
+      if (rank) {
+        filteredData = filteredData.filter(
+          (shaheed) => shaheed.rank.toLowerCase() === rank.toLowerCase()
+        );
+      }
+      if (unit) {
+        filteredData = filteredData.filter(
+          (shaheed) => shaheed.unit.toLowerCase() === unit.toLowerCase()
+        );
+      }
+      if (ps) {
+        filteredData = filteredData.filter(
+          (shaheed) =>
+            shaheed.place_of_posting.toLowerCase() === ps.toLowerCase()
+        );
+      }
+
+      if (from && to) {
+        filteredData = filteredData.filter(
+          (shaheed) =>
+            shaheed.dos.split("-")[2] >= from && shaheed.dos.split("-")[2] <= to
+        );
+      }
+
+      return res.status(200).json(filteredData);
+    });
+  } catch (error) {
+    debug(error);
+    return res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
 // Export controller functions
 module.exports = {
   getShaheed,
@@ -424,4 +478,5 @@ module.exports = {
   createShaheed,
   editShaheed,
   deleteShaheed,
+  filterShaheed,
 };
