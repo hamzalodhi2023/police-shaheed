@@ -17,7 +17,7 @@ const upload = require("../middlewares/shaheed-multer.middleware");
 
 // Define routes and associate them with controller functions
 Router.get("/all", getShaheed) // Get all shaheed records
-  .get("/single", getSingleShaheed) // Get a single shaheed record by ID
+  .get("/single/:id", getSingleShaheed) // Get a single shaheed record by ID
   .post("/create", upload.single("photo"), createShaheed) // Create a new shaheed record
   .patch("/edit/:id", upload.single("photo"), editShaheed) // Update an existing shaheed record
   .get("/filter", filterShaheed) // Filter shaheed records
