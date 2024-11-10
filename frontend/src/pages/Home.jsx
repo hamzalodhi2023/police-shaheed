@@ -122,7 +122,7 @@ function Home() {
             e.preventDefault()
 
             filterMutation.mutate({ rank, from, to, unit, ps })
-          }} className="flex flex-col items-center justify-center w-full gap-4 px-4 md:flex-row">
+          }} className="flex flex-col items-center justify-between px-4 md:flex-row">
             <select
               className="w-full px-3 py-2 text-base border border-gray-300 rounded shadow-lg outline-none md:w-1/6 md:text-lg"
               value={rank}
