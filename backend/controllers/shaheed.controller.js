@@ -45,7 +45,7 @@ const getShaheed = (req, res) => {
 const getSingleShaheed = (req, res) => {
   try {
     // Extract the shaheed ID from the request parameters
-    const { id } = req.query;
+    const { id } = req.params;
 
     // Read the contents of the shaheed JSON file
     fs.readFile(shaheedFilePath, "utf-8", (err, data) => {
