@@ -436,7 +436,7 @@ const filterShaheed = (req, res) => {
       let filteredData = shaheedData;
 
       if (!rank && !unit && !ps && !from && !to) {
-        return res.status(200).json(filteredData);
+        return res.status(200).json({ data: filteredData });
       }
 
       if (rank) {
@@ -463,7 +463,7 @@ const filterShaheed = (req, res) => {
         );
       }
 
-      return res.status(200).json(filteredData);
+      return res.status(200).json({ data: filteredData });
     });
   } catch (error) {
     debug(error);

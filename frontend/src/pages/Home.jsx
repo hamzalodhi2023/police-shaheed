@@ -1,18 +1,35 @@
-import { useQuery } from "@tanstack/react-query";
-
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { GetShaheedData } from "../api/ShaheedApi";
 import RiseLoader from "react-spinners/RiseLoader";
 import ShaheedMap from "../components/ShaheedMap";
 import { NavLink, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Home() {
+  const queryClient = useQueryClient();
+  // ` get all data on reload
   const { data, isPending, error, isError } = useQuery({
     queryKey: ["shaheed"],
-    queryFn: GetShaheedData,
+    queryFn: () => GetShaheedData({ rank: "", from: "", to: "", unit: "", ps: "" }),
   });
+
+  const [filterData, setFilterData] = useState(data)
+
+  useEffect(() => {
+    if (data) setFilterData(data);
+  }, [data]);
+
+  //` filtered data 
+  const filterMutation = useMutation({
+    mutationFn: ({ rank, from, to, unit, ps }) => GetShaheedData({ rank, from, to, unit, ps }),
+    onSuccess: (data) => {
+      queryClient.invalidateQueries(["shaheed"]);
+      setFilterData(data)
+    },
+  });
+
   const navigate = useNavigate();
-  const length = data?.length;
+  const length = filterData?.length || 0;
   //` filter data
   const ranks = [
     { label: "DIGP" },
@@ -40,7 +57,6 @@ function Home() {
   const [unit, setUnit] = useState("");
   const [ps, setPs] = useState("")
 
-  console.log(rank, from, to, unit, ps)
   if (isPending) {
     return (
       <div className="absolute flex flex-col items-center justify-center w-full h-screen gap-10 bg-transparent">
@@ -104,6 +120,8 @@ function Home() {
         <div className="flex w-full pt-5">
           <form onSubmit={(e) => {
             e.preventDefault()
+
+            filterMutation.mutate({ rank, from, to, unit, ps })
           }} className="flex flex-col items-center justify-center w-full gap-4 px-4 md:flex-row">
             <select
               className="w-full px-3 py-2 text-base border border-gray-300 rounded shadow-lg outline-none md:w-1/6 md:text-lg"
@@ -111,7 +129,7 @@ function Home() {
               onChange={(e) => setRank(e.target.value)}
             >
               <option disabled value="">
-                --Select--
+                --Rank--
               </option>
               {ranks.map((rank, index) => (
                 <option key={index} value={rank.label}>
@@ -124,10 +142,9 @@ function Home() {
               className="w-full px-3 py-2 text-base border border-gray-300 rounded shadow-lg outline-none md:w-1/6 md:text-lg"
               value={unit}
               onChange={(e) => setUnit(e.target.value)}
-              required
             >
               <option disabled value="">
-                --Select--
+                --Unit--
               </option>
               {units.map((unit, index) => (
                 <option key={index} value={unit.label}>
@@ -135,9 +152,9 @@ function Home() {
                 </option>
               ))}
             </select>
-            <input value={to} onChange={(e) => setTo(e.target.value)} type="text" className="w-full px-3 py-2 text-base border border-gray-300 rounded shadow-lg outline-none md:w-1/6 md:text-lg" />
-            <input value={from} onChange={(e) => setFrom(e.target.value)} type="text" className="w-full px-3 py-2 text-base border border-gray-300 rounded shadow-lg outline-none md:w-1/6 md:text-lg" />
-            <input value={ps} onChange={(e) => setPs(e.target.value)} type="text" className="w-full px-3 py-2 text-base border border-gray-300 rounded shadow-lg outline-none md:w-1/6 md:text-lg" />
+            <input value={from} placeholder="From" onChange={(e) => setFrom(e.target.value)} type="text" className="w-full px-3 py-2 text-base border border-gray-300 rounded shadow-lg outline-none md:w-1/6 md:text-lg" />
+            <input value={to} placeholder="To" onChange={(e) => setTo(e.target.value)} type="text" className="w-full px-3 py-2 text-base border border-gray-300 rounded shadow-lg outline-none md:w-1/6 md:text-lg" />
+            <input value={ps} placeholder="Place of Posting" onChange={(e) => setPs(e.target.value)} type="text" className="w-full px-3 py-2 text-base border border-gray-300 rounded shadow-lg outline-none md:w-1/6 md:text-lg" />
 
             <button
               type="submit"
@@ -197,7 +214,7 @@ function Home() {
               </tr>
             </thead>
             <tbody>
-              <ShaheedMap data={data} />
+              <ShaheedMap data={filterData} />
             </tbody>
           </table>
         </div>
