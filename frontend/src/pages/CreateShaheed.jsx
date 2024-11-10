@@ -121,7 +121,11 @@ function CreateShaheed() {
     { label: "KIA" },
     { label: "Pakistan Bazar" },
     { label: "Tipu Sultan" },
+    { label: "Jamshed" },
+    { label: "Awami Colony" },
+    { label: "CTD Civil Line" },
   ];
+
   const ranks = [
     { label: "DIGP" },
     { label: "SSP" },
