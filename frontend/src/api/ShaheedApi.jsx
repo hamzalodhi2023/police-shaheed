@@ -2,13 +2,15 @@ import axios from "axios";
 
 axios.defaults.withCredentials = true;
 const api = axios.create({
-  // baseURL: "http://police-shaheed.zubizshop.com/api",
+  baseURL: "http://police-shaheed.zubizshop.com/api",
   // baseURL: "http://localhost:8080/api",
 });
 
 export const GetShaheedData = async ({ rank, from, to, unit, ps }) => {
   try {
-    const res = await api.get(`/shaheed/filter?rank=${rank}&from=${from}&to=${to}&unit=${unit}&ps=${ps}`);
+    const res = await api.get(
+      `/shaheed/filter?rank=${rank}&from=${from}&to=${to}&unit=${unit}&ps=${ps}`,
+    );
     return res.status === 200 ? res.data.data : [];
   } catch (error) {
     console.log(error);
