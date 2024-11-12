@@ -20,8 +20,8 @@ const PORT = process.env.PORT;
 // Middleware setup
 app.use(
   cors({
-    // origin: ["http://77.37.45.84"],
-    origin: ["http://localhost:5173"],
+    origin: ["http://77.37.45.84"],
+    // origin: ["http://localhost:5173"],
     methods: ["GET", "POST", "PATCH", "DELETE"],
     credentials: true,
   })

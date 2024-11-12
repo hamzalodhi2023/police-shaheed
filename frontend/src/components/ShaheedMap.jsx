@@ -8,7 +8,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { EShaheedData } from "../api/ShaheedApi";
 
 function ShaheedMap({ data = [] }) {
-
   const [id, setId] = useState("");
 
   //` notify function for notification 1
@@ -48,7 +47,7 @@ function ShaheedMap({ data = [] }) {
         paid_date: "",
       });
       setDisPhoto("");
-      setPrevDisPhoto("")
+      setPrevDisPhoto("");
     },
   });
   //` all inputs data state for controled components
@@ -76,7 +75,7 @@ function ShaheedMap({ data = [] }) {
   });
   //` photo state
   const [disPhoto, setDisPhoto] = useState("");
-  const [prevDisPhoto, setPrevDisPhoto] = useState("")
+  const [prevDisPhoto, setPrevDisPhoto] = useState("");
   //` inputs option data
   const policeStation = [
     { label: "Clifton" },
@@ -129,6 +128,9 @@ function ShaheedMap({ data = [] }) {
     { label: "KIA" },
     { label: "Pakistan Bazar" },
     { label: "Tipu Sultan" },
+    { label: "Jamshed" },
+    { label: "Awami Colony" },
+    { label: "CTD Civil Line" },
   ];
 
   const ranks = [
@@ -208,7 +210,9 @@ function ShaheedMap({ data = [] }) {
         } = item;
         return (
           <tr key={item.id} className="even:bg-gray-50 hover:bg-gray-100">
-            <td className="border-b px-4 py-2 text-center text-[12px]">{index + 1}</td>
+            <td className="border-b px-4 py-2 text-center text-[12px]">
+              {index + 1}
+            </td>
             <td className="border-b px-4 py-2 text-center text-[12px]">
               {personal_no}
             </td>

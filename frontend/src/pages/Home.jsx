@@ -10,21 +10,23 @@ function Home() {
   // ` get all data on reload
   const { data, isPending, error, isError } = useQuery({
     queryKey: ["shaheed"],
-    queryFn: () => GetShaheedData({ rank: "", from: "", to: "", unit: "", ps: "" }),
+    queryFn: () =>
+      GetShaheedData({ rank: "", from: "", to: "", unit: "", ps: "" }),
   });
 
-  const [filterData, setFilterData] = useState(data)
+  const [filterData, setFilterData] = useState(data);
 
   useEffect(() => {
     if (data) setFilterData(data);
   }, [data]);
 
-  //` filtered data 
+  //` filtered data
   const filterMutation = useMutation({
-    mutationFn: ({ rank, from, to, unit, ps }) => GetShaheedData({ rank, from, to, unit, ps }),
+    mutationFn: ({ rank, from, to, unit, ps }) =>
+      GetShaheedData({ rank, from, to, unit, ps }),
     onSuccess: (data) => {
       queryClient.invalidateQueries(["shaheed"]);
-      setFilterData(data)
+      setFilterData(data);
     },
   });
 
@@ -55,7 +57,7 @@ function Home() {
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
   const [unit, setUnit] = useState("");
-  const [ps, setPs] = useState("")
+  const [ps, setPs] = useState("");
 
   if (isPending) {
     return (
@@ -118,11 +120,14 @@ function Home() {
         </div>
         {/* Filter div started */}
         <div className="flex w-full pt-5">
-          <form onSubmit={(e) => {
-            e.preventDefault()
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
 
-            filterMutation.mutate({ rank, from, to, unit, ps })
-          }} className="flex flex-col items-center justify-between px-4 md:flex-row">
+              filterMutation.mutate({ rank, from, to, unit, ps });
+            }}
+            className="flex flex-col items-center justify-between w-full px-4 md:flex-row"
+          >
             <select
               className="w-full px-3 py-2 text-base border border-gray-300 rounded shadow-lg outline-none md:w-1/6 md:text-lg"
               value={rank}
@@ -152,15 +157,45 @@ function Home() {
                 </option>
               ))}
             </select>
-            <input value={from} placeholder="From" onChange={(e) => setFrom(e.target.value)} type="text" className="w-full px-3 py-2 text-base border border-gray-300 rounded shadow-lg outline-none md:w-1/6 md:text-lg" />
-            <input value={to} placeholder="To" onChange={(e) => setTo(e.target.value)} type="text" className="w-full px-3 py-2 text-base border border-gray-300 rounded shadow-lg outline-none md:w-1/6 md:text-lg" />
-            <input value={ps} placeholder="Place of Posting" onChange={(e) => setPs(e.target.value)} type="text" className="w-full px-3 py-2 text-base border border-gray-300 rounded shadow-lg outline-none md:w-1/6 md:text-lg" />
+            <input
+              value={from}
+              placeholder="From"
+              onChange={(e) => setFrom(e.target.value)}
+              type="text"
+              className="w-full px-3 py-2 text-base border border-gray-300 rounded shadow-lg outline-none md:w-1/6 md:text-lg"
+            />
+            <input
+              value={to}
+              placeholder="To"
+              onChange={(e) => setTo(e.target.value)}
+              type="text"
+              className="w-full px-3 py-2 text-base border border-gray-300 rounded shadow-lg outline-none md:w-1/6 md:text-lg"
+            />
+            <input
+              value={ps}
+              placeholder="Place of Posting"
+              onChange={(e) => setPs(e.target.value)}
+              type="text"
+              className="w-full px-3 py-2 text-base border border-gray-300 rounded shadow-lg outline-none md:w-1/6 md:text-lg"
+            />
 
             <button
               type="submit"
-              className="w-full px-6 py-2 font-bold text-white transition duration-300 bg-blue-500 rounded md:w-auto hover:bg-blue-700"
+              className="w-full px-6 py-2 font-bold text-white transition duration-300 bg-blue-500 rounded hover:bg-blue-700 md:w-auto"
             >
               Filter
+            </button>
+            <button
+              onClick={() => {
+                setRank("");
+                setFrom("");
+                setTo("");
+                setUnit("");
+                setPs("");
+              }}
+              className="w-full px-6 py-2 font-bold text-white transition duration-300 bg-blue-500 rounded hover:bg-blue-700 md:w-auto"
+            >
+              Reset
             </button>
           </form>
         </div>
@@ -218,7 +253,7 @@ function Home() {
             </tbody>
           </table>
         </div>
-      </div >
+      </div>
     </>
   );
 }
