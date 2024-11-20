@@ -124,7 +124,10 @@ function CreateShaheed() {
     { label: "Jamshed" },
     { label: "Awami Colony" },
     { label: "CTD Civil Line" },
+    { label: "iqbal market" },
+    { label: "ps shah faisal" },
   ];
+
 
   const ranks = [
     { label: "DIGP" },
