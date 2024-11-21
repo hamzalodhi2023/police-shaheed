@@ -131,8 +131,8 @@ function ShaheedMap({ data = [] }) {
     { label: "Jamshed" },
     { label: "Awami Colony" },
     { label: "CTD Civil Line" },
-    { label: "iqbal market" },
-    { label: "ps shah faisal" },
+    { label: "Iqbal Market" },
+    { label: "Shah Faisal" },
   ];
 
   const ranks = [
