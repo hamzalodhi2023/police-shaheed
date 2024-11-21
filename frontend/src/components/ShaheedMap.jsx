@@ -301,7 +301,7 @@ function ShaheedMap({ data = [] }) {
                   setPrevDisPhoto(photo);
                   setId(id);
                 }}
-                className="px-2 py-1 m-2 font-bold text-white bg-green-500 rounded hover:bg-green-700"
+                className="hidden px-2 py-1 m-2 font-bold text-white bg-green-500 rounded hover:bg-green-700"
               >
                 <MdEditSquare />
               </button>
